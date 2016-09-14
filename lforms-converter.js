@@ -161,11 +161,9 @@ _.extend(LFormsConverter.prototype, {
       // cde label is item.question
       param.question = param.label;
       delete param.label;
+
       // cde element type determines item.header
-      param.header = false;
-      if (param.elementType === 'section' || param.elementType === 'form') {
-        param.header = true;
-      }
+      param.header = param.elementType === 'section' || param.elementType === 'form';
       delete param.elementType;
 
       // Map datatype
