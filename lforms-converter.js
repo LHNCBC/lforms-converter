@@ -414,7 +414,9 @@ function doSkipLogic(root) {
         }
         return stopLooking;
       }, ancestors);
-
+      if (item.skipLogic && item.skipLogic.contition && item.skipLogic.condition.trim() === "") {
+        delete item.skipLogic;
+      }
     }
 
     return false; // Continue traversal for all skipLogic nodes
