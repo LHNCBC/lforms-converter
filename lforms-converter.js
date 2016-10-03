@@ -414,7 +414,7 @@ function doSkipLogic(root) {
         }
         return stopLooking;
       }, ancestors);
-      if (item.skipLogic && item.skipLogic.contition && item.skipLogic.condition.trim() === "") {
+      if (item.skipLogic && item.skipLogic.condition && item.skipLogic.condition.trim() === "") {
         delete item.skipLogic;
       }
     }
