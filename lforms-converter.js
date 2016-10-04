@@ -398,6 +398,9 @@ function doSkipLogic(root) {
 
   traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
+      if (item.skipLogic.condition != undefined && item.skipLogic.condition.trim() === "") {
+        delete item.skipLogic;
+      } else {
       // This is target item. Parse 'condition' to look for source item
       var tokens = item.skipLogic.condition.split('=');
       tokens = _.each(tokens, function(a, ind, arr) {
@@ -414,8 +417,6 @@ function doSkipLogic(root) {
         }
         return stopLooking;
       }, ancestors);
-      if (item.skipLogic && item.skipLogic.condition && item.skipLogic.condition.trim() === "") {
-        delete item.skipLogic;
       }
     }
 
