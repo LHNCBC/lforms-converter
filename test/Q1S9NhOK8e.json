@@ -1,0 +1,734 @@
+{
+  "_id": "56099c4b3564d24756722e51",
+  "updated": "2015-09-28T20:00:11.088Z",
+  "tinyId": "Q1S9NhOK8e",
+  "created": "2015-08-21T15:30:08.167Z",
+  "isCopyrighted": true,
+  "__v": 5,
+  "referenceDocuments": [],
+  "displayProfiles": [
+    {
+      "name": "Default",
+      "sectionsAsMatrix": true,
+      "displayValues": true
+    }
+  ],
+  "classification": [
+    {
+      "elements": [
+        {
+          "name": "Neuro-QOL Measures",
+          "elements": [
+            {
+              "name": "Other",
+              "elements": []
+            }
+          ]
+        }
+      ],
+      "stewardOrg": {
+        "name": "PROMIS / Neuro-QOL"
+      }
+    }
+  ],
+  "formElements": [
+    {
+      "elementType": "section",
+      "label": "In the past 7 days",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "I had to read something several times to understand it",
+          "_id": "55d74400748e653826fddd98",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Rarely (once)"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes (2-3 times)"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Often (once a day)"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Very Often (several times a day)"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "In the past 7 days I had to read something several times to understand it",
+              "tinyId": "71Aoe_Jd2kQe",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG64r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67966-2"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Rarely (once)"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes (2-3 times)"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Often (once a day)"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Very Often (several times a day)"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "my thinking was slow",
+          "_id": "55d74400748e653826fddd97",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Rarely (once)"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes (2-3 times)"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Often (once a day)"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Very Often (several times a day)"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "In the past 7 days my thinking was slow",
+              "tinyId": "7ky3xuyd2Jmx",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG75r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67971-2"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Rarely (once)"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes (2-3 times)"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Often (once a day)"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Very Often (several times a day)"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "I had to work really hard to pay attention or I would make a mistake",
+          "_id": "55d74400748e653826fddd96",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Rarely (once)"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes (2-3 times)"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Often (once a day)"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Very Often (several times a day)"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "In the past 7 days I had to work really hard to pay attention or I would make a mistake",
+              "tinyId": "XJghldkO2Jmx",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG77r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67972-0"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Rarely (once)"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes (2-3 times)"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Often (once a day)"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Very Often (several times a day)"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "I had trouble concentrating",
+          "_id": "55d74400748e653826fddd95",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Rarely (once)"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes (2-3 times)"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Often (once a day)"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Very Often (several times a day)"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "In the past 7 days I had trouble concentrating",
+              "tinyId": "7yZne_1uh1Xg",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG80r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67973-8"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Rarely (once)"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes (2-3 times)"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Often (once a day)"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Very Often (several times a day)"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "ids": [],
+          "permissibleValues": []
+        }
+      },
+      "cardinality": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "elementType": "section",
+      "label": "How much DIFFICULTY do you currently have...",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "reading and following complex instructions  (e.g., directions for a new medication)?",
+          "_id": "55d74400748e653826fddd94",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "None"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "A little"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Somewhat",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13909-9"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "A lot"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Cannot do",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13868-7"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "How much DIFFICULTY do you currently have... reading and following complex instructions  (e.g., directions for a new medication)?",
+              "tinyId": "mJGneOkdhJQl",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG22r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67955-5"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "None"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "A little"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Somewhat",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13909-9"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "A lot"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Cannot do",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13868-7"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "Planning for and keeping appointments that are not part of your weekly routine, (e.g., a therapy or doctor appointment, or a social gathering with friends and family)?",
+          "_id": "55d74400748e653826fddd93",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "None"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "A little"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Somewhat",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13909-9"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "A lot"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Cannot do",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13868-7"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "How much DIFFICULTY do you currently have... Planning for and keeping appointments that are not part of your weekly routine, (e.g., a therapy or doctor appointment, or a social gathering with friends and family)?",
+              "tinyId": "Qy73lukdnyXe",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG24r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67956-3"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "None"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "A little"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Somewhat",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13909-9"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "A lot"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Cannot do",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13868-7"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "managing your time to do most of your daily activities?",
+          "_id": "55d74400748e653826fddd92",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "None"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "A little"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Somewhat",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13909-9"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "A lot"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Cannot do",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13868-7"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "How much DIFFICULTY do you currently have... managing your time to do most of your daily activities?",
+              "tinyId": "Q1N3g_k_2kQx",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG25r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67957-1"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "None"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "A little"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Somewhat",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13909-9"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "A lot"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Cannot do",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13868-7"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "learning new tasks or instructions?",
+          "_id": "55d74400748e653826fddd91",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "None"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "A little"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Somewhat",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13909-9"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "A lot"
+              },
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Cannot do",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13868-7"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "name": "How much DIFFICULTY do you currently have... learning new tasks or instructions?",
+              "tinyId": "Qyrhxd1_217e",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "NQCOG40r1"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "67960-5"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "None"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "A little"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Somewhat",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13909-9"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "A lot"
+                },
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Cannot do",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13868-7"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "hideLabel": false
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "ids": [],
+          "permissibleValues": []
+        }
+      },
+      "cardinality": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ],
+  "createdBy": {
+    "username": "loader"
+  },
+  "history": [],
+  "comments": [],
+  "attachments": [],
+  "copyright": {
+    "authority": "PROMIS",
+    "text": "2008-2015 David Cella and the PROMIS Health Organization on behalf of the National Institute for Neurological Disorders and Stroke (NINDS)"
+  },
+  "ids": [
+    {
+      "source": "Assessment Center",
+      "id": "44F0F59E-F34A-48F1-B9A6-4E80674AE32E"
+    }
+  ],
+  "properties": [
+    {
+      "key": "Form Instructions",
+      "value": "Please respond to each question or statement by marking one box per row."
+    }
+  ],
+  "registrationState": {
+    "registrationStatus": "Recorded"
+  },
+  "stewardOrg": {
+    "name": "PROMIS / Neuro-QOL"
+  },
+  "naming": [
+    {
+      "designation": "Neuro-QOL Scale v1.0 - Communication",
+      "definition": "N/A"
+    }
+  ]
+}

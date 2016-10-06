@@ -35,6 +35,10 @@
 
     it('should display required popup', function() {
       page.itemRequired.click();
+      // Popup error message displays when the user enters empty string and leaves the field.
+      page.itemRequired.sendKeys(' ');
+      page.itemIntType.click(); // Click on something else to generate blur event.
+      page.waitForDisplayed(page.itemRequiredPopup);
       expect(page.itemRequiredPopup.isDisplayed()).toBeTruthy();
     });
 
@@ -68,4 +72,16 @@
       });
     });
 
-});
+    describe('should test matrix display', function () {
+
+      beforeAll(function() {
+        page.formSelector.click();
+        page.formSelector.$('[value="test/Q1S9NhOK8e.json"]').click();
+      });
+
+      it('should display matrix display for answer lists', function() {
+        expect(page.matrixRadioButtons.count()).toBe(40);
+      });
+    });
+
+  });

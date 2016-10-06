@@ -42,10 +42,10 @@
   <script src="../../bower_components/oboe/dist/oboe-browser.js"></script>
   <script src="../../bower_components/traverse/traverse.js"></script>
   <script src="../../bower_components/lodash/lodash.js"></script>
+  <script src="../../bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="../../bower_components/angular/angular.js"></script>
   <script src="../../bower_components/angular-animate/angular-animate.js"></script>
   <script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="../../bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="../../bower_components/autocomplete-lhc/source/prototype_api.js"></script>
   <script src="../../bower_components/autocomplete-lhc/source/effects.js"></script>
   <script src="../../bower_components/autocomplete-lhc/source/effectScroll.js"></script>
@@ -67,12 +67,15 @@
   <script src="../../bower_components/lforms/app/lforms.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lforms-constants.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lforms-config.js"></script>
-  <script src="../../bower_components/lforms/app/scripts/lforms-controller.js"></script>
-  <script src="../../bower_components/lforms/app/scripts/directives/lf-date.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lforms-controllers.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lforms-directives.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lib/date.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lib/js-class.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lib/cross_browser.js"></script>
-  <script src="../../bower_components/lforms/app/scripts/lib/util.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lib/lforms-util.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lib/polyfill.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lib/lforms-hl7.js"></script>
+  <script src="../../bower_components/lforms/app/scripts/lib/lforms-validate.js"></script>
   <script src="../../bower_components/lforms/app/scripts/lib/lforms-data.js"></script>
   <script src="../../bower_components/lforms/app/lforms.tpl.js"></script>
   <script src="../../bower_components/angular-route/angular-route.js"></script>
@@ -104,6 +107,7 @@
           var converter = new LFormsConverter();
           converter.convert($scope.testForm,
             function(lfData) {
+              $scope.rawLFData = angular.copy(lfData);
               $scope.lfData = new LFormsData(lfData);
               $scope.lfData.setTemplateOptions({hideHeader: false});
               $scope.$apply($scope.lfData);
@@ -115,6 +119,10 @@
           );
         };
 
+        $scope.getRawJson = function() {
+          return JSON.stringify($scope.rawLFData, null, 2);
+        };
+
         $scope.setLfData();
       }]);
   </script>
@@ -123,11 +131,15 @@
 
     <select id="formSelector" ng-model="testForm" ng-change="setLfData()">
       <option value="test/bJ5Sm82g8.json">Form with new changes</option>
+      <!-- Form to test matrix display of answer list-->
+      <option value="test/Q1S9NhOK8e.json">Form with matrix display</option>
     </select>
+    <label><input type="checkbox" ng-model="chb">Raw json</label>
 
     <div ng-show="error" class="error-message">{{error}}</div>
 
-    <lforms lf-data="lfData" lf-options="lformsOpts"></lforms>
+    <lforms ng-hide="chb" lf-data="lfData" lf-options="lformsOpts"></lforms>
+    <pre ng-show="chb">{{getRawJson()}}</pre>
 
   </script>
 

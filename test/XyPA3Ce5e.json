@@ -1,1 +1,618 @@
-{"_id":"56818ca121ee952976de0fc7","updated":"2015-12-28T19:25:21.852Z","tinyId":"XyPA3Ce5e","created":"2015-10-02T15:37:01.200Z","__v":0,"referenceDocuments":[],"displayProfiles":[{"name":"Default","sectionsAsMatrix":true,"displayValues":true,"_id":"560ea4c0e01940c7202068ae"}],"classification":[{"elements":[{"name":"Demo","elements":[]}],"stewardOrg":{"name":"TEST"}}],"formElements":[{"label":"Patient Characteristics","cardinality":"1","elementType":"section","instructions":"to be answered by the patient","formElements":[{"elementType":"question","label":"Birth date","_id":"560ea55fe01940c7202068d4","instructions":"Enter birthdate here","formElements":[],"question":{"datatype":"Date","answers":[],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"OtsN78xANu1","version":"3","permissibleValues":[],"derivationRules":[]}}},{"elementType":"question","label":"Birth country name","_id":"560ea55fe01940c7202068d3","formElements":[],"question":{"datatype":"Text","answers":[],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"Ocs5vm-dRJr","version":"3","permissibleValues":[],"derivationRules":[]}}},{"elementType":"question","label":"Person Height Value","_id":"560ea55fe01940c7202068d2","formElements":[],"question":{"datatype":"Number","answers":[],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"Xkfx6QemyJg","version":"1","permissibleValues":[],"derivationRules":[]}}},{"elementType":"question","label":"Person Weight Value","_id":"560ea55fe01940c7202068d1","skipLogic":{"condition":""},"formElements":[],"question":{"datatype":"Number","answers":[],"editable":true,"required":false,"uoms":["kg","lbs"],"cde":{"tinyId":"myNepmgQykx","version":"1","permissibleValues":[],"derivationRules":[]}}}],"question":{"answers":[],"editable":true,"required":false,"uoms":[],"cde":{"permissibleValues":[]}}},{"label":"Anger","cardinality":"1","elementType":"section","formElements":[{"elementType":"question","label":"In the past 7 days I was grouchy","_id":"560ea55fe01940c7202068d0","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"X1JMdJOhyml","permissibleValues":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"derivationRules":[]}}},{"elementType":"question","label":"In the past 7 days I felt annoyed","_id":"560ea55fe01940c7202068cf","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"mkgzdy_nyXe","permissibleValues":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"derivationRules":[]}}},{"elementType":"question","label":"In the past 7 days I felt angry","_id":"560ea55fe01940c7202068ce","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"QJp_d1uh17e","permissibleValues":[{"permissibleValue":"1","valueMeaningName":"Never","codeSystemName":"LOINC","valueMeaningCode":"LA6270-8"},{"permissibleValue":"2","valueMeaningName":"Rarely","codeSystemName":"LOINC","valueMeaningCode":"LA10066-1"},{"permissibleValue":"3","valueMeaningName":"Sometimes","codeSystemName":"LOINC","valueMeaningCode":"LA10082-8"},{"permissibleValue":"4","valueMeaningName":"Often","codeSystemName":"LOINC","valueMeaningCode":"LA10044-8"},{"permissibleValue":"5","valueMeaningName":"Always","codeSystemName":"LOINC","valueMeaningCode":"LA9933-8"}],"derivationRules":[]}}}],"question":{"answers":[],"editable":true,"required":false,"uoms":[],"cde":{"permissibleValues":[]}}},{"label":"Alcohol Use","cardinality":"1","elementType":"section","formElements":[{"elementType":"question","label":"Alcohol current use indicator","_id":"560ea5b9e01940c7202068ed","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"Yes","valueMeaningName":"Yes"},{"permissibleValue":"No","valueMeaningName":"No"},{"permissibleValue":"Unknown","valueMeaningName":"Unknown"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"4pjhjr5eGQJ","version":"3","permissibleValues":[{"permissibleValue":"Yes","valueMeaningName":"Yes"},{"permissibleValue":"No","valueMeaningName":"No"},{"permissibleValue":"Unknown","valueMeaningName":"Unknown"}],"derivationRules":[]}}},{"label":"If currently drinking","elementType":"section","_id":"560ea5b9e01940c7202068eb","skipLogic":{"condition":"\"Alcohol current use indicator\" = \"Yes\""},"formElements":[{"elementType":"question","label":"Alcohol History Type","_id":"560ea64ae01940c72020690c","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"1 to 12 drinks per month in average year","valueMeaningName":"1 to 12 drinks per month in average year","valueMeaningDefinition":"1 to 12 drinks per month in average year"},{"permissibleValue":"Fewer than 12 drinks in average year","valueMeaningName":"Fewer than 12 drinks in average year","valueMeaningDefinition":"Fewer than 12 drinks in average year"},{"permissibleValue":"Fewer than 12 drinks in lifetime","valueMeaningName":"Fewer than 12 drinks in lifetime","valueMeaningDefinition":"Fewer than 12 drinks in lifetime"},{"permissibleValue":"More than 4 drinks per week in average year","valueMeaningName":"More than 4 drinks per week in average year","valueMeaningDefinition":"More than 4 drinks per week in average year"},{"permissibleValue":"Unknown","valueMeaningName":"Unknown","valueMeaningDefinition":"Not known, not observed, not recorded, or refused.","valueMeaningCode":"C17998"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"XkcBYR7Jyg","version":"1","permissibleValues":[{"permissibleValue":"1 to 12 drinks per month in average year","valueMeaningName":"1 to 12 drinks per month in average year","valueMeaningDefinition":"1 to 12 drinks per month in average year"},{"permissibleValue":"Fewer than 12 drinks in average year","valueMeaningName":"Fewer than 12 drinks in average year","valueMeaningDefinition":"Fewer than 12 drinks in average year"},{"permissibleValue":"Fewer than 12 drinks in lifetime","valueMeaningName":"Fewer than 12 drinks in lifetime","valueMeaningDefinition":"Fewer than 12 drinks in lifetime"},{"permissibleValue":"More than 4 drinks per week in average year","valueMeaningName":"More than 4 drinks per week in average year","valueMeaningDefinition":"More than 4 drinks per week in average year"},{"permissibleValue":"Unknown","valueMeaningName":"Unknown","valueMeaningDefinition":"Not known, not observed, not recorded, or refused.","valueMeaningCode":"C17998"}],"derivationRules":[]}}},{"elementType":"question","label":"Alcohol Current Use Frequency","_id":"560ea5b9e01940c7202068ec","formElements":[],"question":{"datatype":"Value List","answers":[{"permissibleValue":"Everyday","valueMeaningName":"Everyday","valueMeaningDefinition":"Everyday"},{"permissibleValue":"Not at all","valueMeaningName":"Not at all","valueMeaningDefinition":"A subjective answer of non-agreement.","valueMeaningCode":"C91213"},{"permissibleValue":"Some days","valueMeaningName":"Some Days","valueMeaningDefinition":"Some Days"}],"editable":true,"required":false,"uoms":[],"cde":{"tinyId":"Qy9_IBXyJg","version":"1","permissibleValues":[{"permissibleValue":"Everyday","valueMeaningName":"Everyday","valueMeaningDefinition":"Everyday"},{"permissibleValue":"Not at all","valueMeaningName":"Not at all","valueMeaningDefinition":"A subjective answer of non-agreement.","valueMeaningCode":"C91213"},{"permissibleValue":"Some days","valueMeaningName":"Some Days","valueMeaningDefinition":"Some Days"}],"derivationRules":[]}}}],"question":{"answers":[],"editable":true,"required":false,"uoms":[],"cde":{"permissibleValues":[]}}}],"question":{"answers":[],"editable":true,"required":false,"uoms":[],"cde":{"permissibleValues":[]}}}],"createdBy":{"userId":"543592a2ca0aeea96df24299","username":"ludetc"},"history":[],"comments":[],"attachments":[],"ids":[],"properties":[],"registrationState":{"registrationStatus":"Incomplete"},"stewardOrg":{"name":"TEST"},"naming":[{"designation":"Demo Form","definition":"Form for demo purposes","context":{"contextName":"Health","acceptability":"preferred"}}]}
+{
+  "_id": "56818ca121ee952976de0fc7",
+  "updated": "2015-12-28T19:25:21.852Z",
+  "tinyId": "XyPA3Ce5e",
+  "created": "2015-10-02T15:37:01.200Z",
+  "__v": 0,
+  "referenceDocuments": [],
+  "displayProfiles": [
+    {
+      "name": "Default",
+      "sectionsAsMatrix": true,
+      "displayValues": true,
+      "_id": "560ea4c0e01940c7202068ae"
+    }
+  ],
+  "classification": [
+    {
+      "elements": [
+        {
+          "name": "Demo",
+          "elements": []
+        }
+      ],
+      "stewardOrg": {
+        "name": "TEST"
+      }
+    }
+  ],
+  "formElements": [
+    {
+      "label": "Patient Characteristics",
+      "cardinality": "1",
+      "elementType": "section",
+      "instructions": "to be answered by the patient",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "Birth date",
+          "_id": "560ea55fe01940c7202068d4",
+          "instructions": "Enter birthdate here",
+          "formElements": [],
+          "question": {
+            "datatype": "Date",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "OtsN78xANu1",
+              "version": "3",
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "elementType": "question",
+          "label": "Birth country name",
+          "_id": "560ea55fe01940c7202068d3",
+          "formElements": [],
+          "question": {
+            "datatype": "Text",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "Ocs5vm-dRJr",
+              "version": "3",
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "elementType": "question",
+          "label": "Person Height Value",
+          "_id": "560ea55fe01940c7202068d2",
+          "formElements": [],
+          "question": {
+            "datatype": "Number",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "Xkfx6QemyJg",
+              "version": "1",
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "elementType": "question",
+          "label": "Person Weight Value",
+          "_id": "560ea55fe01940c7202068d1",
+          "skipLogic": {
+            "condition": ""
+          },
+          "formElements": [],
+          "question": {
+            "datatype": "Number",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [
+              "kg",
+              "lbs"
+            ],
+            "cde": {
+              "tinyId": "myNepmgQykx",
+              "version": "1",
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          }
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "permissibleValues": []
+        }
+      }
+    },
+    {
+      "label": "Anger",
+      "cardinality": "1",
+      "elementType": "section",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "In the past 7 days I was grouchy",
+          "_id": "560ea55fe01940c7202068d0",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Rarely",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10066-1"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10082-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Often",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10044-8"
+              },
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Always",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA9933-8"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "X1JMdJOhyml",
+              "permissibleValues": [
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Rarely",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10066-1"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10082-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Often",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10044-8"
+                },
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Always",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA9933-8"
+                }
+              ],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "elementType": "question",
+          "label": "In the past 7 days I felt annoyed",
+          "_id": "560ea55fe01940c7202068cf",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Rarely",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10066-1"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10082-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Often",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10044-8"
+              },
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Always",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA9933-8"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "mkgzdy_nyXe",
+              "permissibleValues": [
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Rarely",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10066-1"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10082-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Often",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10044-8"
+                },
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Always",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA9933-8"
+                }
+              ],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "elementType": "question",
+          "label": "In the past 7 days I felt angry",
+          "_id": "560ea55fe01940c7202068ce",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Never",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6270-8"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "Rarely",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10066-1"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Sometimes",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10082-8"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Often",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA10044-8"
+              },
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Always",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA9933-8"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "QJp_d1uh17e",
+              "permissibleValues": [
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Never",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6270-8"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Rarely",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10066-1"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Sometimes",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10082-8"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Often",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA10044-8"
+                },
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Always",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA9933-8"
+                }
+              ],
+              "derivationRules": []
+            }
+          }
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "permissibleValues": []
+        }
+      }
+    },
+    {
+      "label": "Alcohol Use",
+      "cardinality": "1",
+      "elementType": "section",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "Alcohol current use indicator",
+          "_id": "560ea5b9e01940c7202068ed",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "Yes",
+                "valueMeaningName": "Yes"
+              },
+              {
+                "permissibleValue": "No",
+                "valueMeaningName": "No"
+              },
+              {
+                "permissibleValue": "Unknown",
+                "valueMeaningName": "Unknown"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "4pjhjr5eGQJ",
+              "version": "3",
+              "permissibleValues": [
+                {
+                  "permissibleValue": "Yes",
+                  "valueMeaningName": "Yes"
+                },
+                {
+                  "permissibleValue": "No",
+                  "valueMeaningName": "No"
+                },
+                {
+                  "permissibleValue": "Unknown",
+                  "valueMeaningName": "Unknown"
+                }
+              ],
+              "derivationRules": []
+            }
+          }
+        },
+        {
+          "label": "If currently drinking",
+          "elementType": "section",
+          "_id": "560ea5b9e01940c7202068eb",
+          "skipLogic": {
+            "condition": "\"Alcohol current use indicator\" = \"Yes\""
+          },
+          "formElements": [
+            {
+              "elementType": "question",
+              "label": "Alcohol History Type",
+              "_id": "560ea64ae01940c72020690c",
+              "formElements": [],
+              "question": {
+                "datatype": "Value List",
+                "answers": [
+                  {
+                    "permissibleValue": "1 to 12 drinks per month in average year",
+                    "valueMeaningName": "1 to 12 drinks per month in average year",
+                    "valueMeaningDefinition": "1 to 12 drinks per month in average year"
+                  },
+                  {
+                    "permissibleValue": "Fewer than 12 drinks in average year",
+                    "valueMeaningName": "Fewer than 12 drinks in average year",
+                    "valueMeaningDefinition": "Fewer than 12 drinks in average year"
+                  },
+                  {
+                    "permissibleValue": "Fewer than 12 drinks in lifetime",
+                    "valueMeaningName": "Fewer than 12 drinks in lifetime",
+                    "valueMeaningDefinition": "Fewer than 12 drinks in lifetime"
+                  },
+                  {
+                    "permissibleValue": "More than 4 drinks per week in average year",
+                    "valueMeaningName": "More than 4 drinks per week in average year",
+                    "valueMeaningDefinition": "More than 4 drinks per week in average year"
+                  },
+                  {
+                    "permissibleValue": "Unknown",
+                    "valueMeaningName": "Unknown",
+                    "valueMeaningDefinition": "Not known, not observed, not recorded, or refused.",
+                    "valueMeaningCode": "C17998"
+                  }
+                ],
+                "editable": true,
+                "required": false,
+                "uoms": [],
+                "cde": {
+                  "tinyId": "XkcBYR7Jyg",
+                  "version": "1",
+                  "permissibleValues": [
+                    {
+                      "permissibleValue": "1 to 12 drinks per month in average year",
+                      "valueMeaningName": "1 to 12 drinks per month in average year",
+                      "valueMeaningDefinition": "1 to 12 drinks per month in average year"
+                    },
+                    {
+                      "permissibleValue": "Fewer than 12 drinks in average year",
+                      "valueMeaningName": "Fewer than 12 drinks in average year",
+                      "valueMeaningDefinition": "Fewer than 12 drinks in average year"
+                    },
+                    {
+                      "permissibleValue": "Fewer than 12 drinks in lifetime",
+                      "valueMeaningName": "Fewer than 12 drinks in lifetime",
+                      "valueMeaningDefinition": "Fewer than 12 drinks in lifetime"
+                    },
+                    {
+                      "permissibleValue": "More than 4 drinks per week in average year",
+                      "valueMeaningName": "More than 4 drinks per week in average year",
+                      "valueMeaningDefinition": "More than 4 drinks per week in average year"
+                    },
+                    {
+                      "permissibleValue": "Unknown",
+                      "valueMeaningName": "Unknown",
+                      "valueMeaningDefinition": "Not known, not observed, not recorded, or refused.",
+                      "valueMeaningCode": "C17998"
+                    }
+                  ],
+                  "derivationRules": []
+                }
+              }
+            },
+            {
+              "elementType": "question",
+              "label": "Alcohol Current Use Frequency",
+              "_id": "560ea5b9e01940c7202068ec",
+              "formElements": [],
+              "question": {
+                "datatype": "Value List",
+                "answers": [
+                  {
+                    "permissibleValue": "Everyday",
+                    "valueMeaningName": "Everyday",
+                    "valueMeaningDefinition": "Everyday"
+                  },
+                  {
+                    "permissibleValue": "Not at all",
+                    "valueMeaningName": "Not at all",
+                    "valueMeaningDefinition": "A subjective answer of non-agreement.",
+                    "valueMeaningCode": "C91213"
+                  },
+                  {
+                    "permissibleValue": "Some days",
+                    "valueMeaningName": "Some Days",
+                    "valueMeaningDefinition": "Some Days"
+                  }
+                ],
+                "editable": true,
+                "required": false,
+                "uoms": [],
+                "cde": {
+                  "tinyId": "Qy9_IBXyJg",
+                  "version": "1",
+                  "permissibleValues": [
+                    {
+                      "permissibleValue": "Everyday",
+                      "valueMeaningName": "Everyday",
+                      "valueMeaningDefinition": "Everyday"
+                    },
+                    {
+                      "permissibleValue": "Not at all",
+                      "valueMeaningName": "Not at all",
+                      "valueMeaningDefinition": "A subjective answer of non-agreement.",
+                      "valueMeaningCode": "C91213"
+                    },
+                    {
+                      "permissibleValue": "Some days",
+                      "valueMeaningName": "Some Days",
+                      "valueMeaningDefinition": "Some Days"
+                    }
+                  ],
+                  "derivationRules": []
+                }
+              }
+            }
+          ],
+          "question": {
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "permissibleValues": []
+            }
+          }
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "permissibleValues": []
+        }
+      }
+    }
+  ],
+  "createdBy": {
+    "userId": "543592a2ca0aeea96df24299",
+    "username": "ludetc"
+  },
+  "history": [],
+  "comments": [],
+  "attachments": [],
+  "ids": [],
+  "properties": [],
+  "registrationState": {
+    "registrationStatus": "Incomplete"
+  },
+  "stewardOrg": {
+    "name": "TEST"
+  },
+  "naming": [
+    {
+      "designation": "Demo Form",
+      "definition": "Form for demo purposes",
+      "context": {
+        "contextName": "Health",
+        "acceptability": "preferred"
+      }
+    }
+  ]
+}

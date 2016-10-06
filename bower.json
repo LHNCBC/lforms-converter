@@ -1,6 +1,6 @@
 {
   "name": "lforms-converter",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "main": [
     "lforms-converter.js"
   ],
@@ -10,7 +10,7 @@
     "lodash": "^3.10.0"
   },
   "devDependencies": {
-    "lforms": "^4.2.3",
+    "lforms": "^7.6.0",
     "angular-route": "^1.4.7"
   },
   "authors": [

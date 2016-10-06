@@ -1,5 +1,5 @@
 exports.config = {
-  // directConnect: true,
+  directConnect: true, // Avoids occasional timeout while launching selenium web-driver.
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
     'browserName': 'firefox'

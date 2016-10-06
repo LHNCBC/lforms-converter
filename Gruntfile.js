@@ -189,13 +189,17 @@ module.exports = function (grunt) {
     grunt.config.set('connect.test.options.port', port);
   });
 
-  grunt.registerTask('test', [
-    'nsp',
+  grunt.registerTask('test:unit', [
     'wiredep',
-    'jasmine',
+    'jasmine'
+  ]);
+
+  grunt.registerTask('test', [
+    'test:unit',
     'setTestPort',
     'connect:test',
-    'protractor'
+    'protractor',
+    'nsp'
   ]);
 
   grunt.registerTask('default', [
