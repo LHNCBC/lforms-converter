@@ -413,7 +413,6 @@ function createDataType(question) {
   return ret;
 }
 
-
 /**
  * Convert skip logic object to our format.
  *
@@ -421,30 +420,33 @@ function createDataType(question) {
  * @returns {undefined}
  */
 function doSkipLogic(root) {
-    traverseItems(root, function (item, ancestors) {
-        if (item.skipLogic) {
-            if (item.skipLogic.condition != undefined && item.skipLogic.condition.trim() === "") {
-                delete item.skipLogic;
-            } else {
-                // This is target item. Parse 'condition' to look for source item
-                var tokens = item.skipLogic.condition.split('=');
-                tokens = _.each(tokens, function (a, ind, arr) {
-                    arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
-                });
-                var text = tokens[0];
-                var value = tokens[1];
-                traverseItemsUpside(item, function (sourceItem) {
-                    var stopLooking = false;
-                    if (sourceItem.question === text) {
-                        item.skipLogic = createSkipLogic(value, sourceItem);
-                        stopLooking = true;
-                    }
-                    return stopLooking;
-                }, ancestors);
-            }
-        }
-        return false; // Continue traversal for all skipLogic nodes
-    }, []);
+
+  traverseItems(root, function(item, ancestors) {
+    if(item.skipLogic) {
+      if (item.skipLogic.condition != undefined && item.skipLogic.condition.trim() === "") {
+        delete item.skipLogic;
+      } else {
+        // This is target item. Parse 'condition' to look for source item
+        var tokens = item.skipLogic.condition.split('=');
+        tokens = _.each(tokens, function (a, ind, arr) {
+          arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
+        });
+        var text = tokens[0];
+        var value = tokens[1];
+
+        traverseItemsUpside(item, function (sourceItem) {
+          var stopLooking = false;
+          if (sourceItem.question === text) {
+            item.skipLogic = createSkipLogic(value, sourceItem);
+            stopLooking = true;
+          }
+          return stopLooking;
+        }, ancestors);
+      }
+    }
+
+    return false; // Continue traversal for all skipLogic nodes
+  }, []);
 }
 
 
