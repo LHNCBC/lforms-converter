@@ -92,12 +92,22 @@
             controller: 'lformsTestController',
             templateUrl: 'lforms-test.html'
           })
+          .when('/:testFormsPath/:tinyId/:raw', {
+            controller: 'lformsTestController',
+            templateUrl: 'lforms-test.html'
+          })
           .otherwise({redirectTo: '/'});
       })
-      .controller('lformsTestController', ['$scope', function ($scope) {
+      .controller('lformsTestController', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
-        $scope.testFormsPath = 'test/';
-        $scope.testForm = $scope.testFormsPath + 'bJ5Sm82g8.json';
+        if(typeof $routeParams.testFormsPath !== 'undefined' && $routeParams.testFormsPath === 'cde') {
+          $scope.testForm = 'https://cde.nlm.nih.gov/form/' + $routeParams.tinyId;
+          $scope.chb = $routeParams.raw === "raw" ? true : false;
+        }
+        else {
+          $scope.testFormsPath = 'test/';
+          $scope.testForm = $scope.testFormsPath + 'bJ5Sm82g8.json';
+        }
         $scope.lformsOpts = {
           hideHeader: false
         };
