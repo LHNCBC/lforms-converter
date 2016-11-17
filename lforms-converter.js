@@ -423,7 +423,7 @@ function doSkipLogic(root) {
 
   traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
-      if(item.skipLogic.condition === undefined || item.skipLogic.condition === "") {
+      if(!item.skipLogic.condition) {
         delete item.skipLogic;
       }
       else {
