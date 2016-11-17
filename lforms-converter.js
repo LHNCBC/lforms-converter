@@ -423,25 +423,26 @@ function doSkipLogic(root) {
 
   traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
-      if (item.skipLogic.condition != undefined && item.skipLogic.condition.trim() === "") {
-        delete item.skipLogic;
-      } else {
-        // This is target item. Parse 'condition' to look for source item
-        var tokens = item.skipLogic.condition.split('=');
-        tokens = _.each(tokens, function (a, ind, arr) {
-          arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
-        });
-        var text = tokens[0];
-        var value = tokens[1];
+      // This is target item. Parse 'condition' to look for source item
+      var tokens = item.skipLogic.condition.split('=');
+      tokens = _.each(tokens, function(a, ind, arr) {
+        arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
+      });
+      var text = tokens[0];
+      var value = tokens[1];
 
-        traverseItemsUpside(item, function (sourceItem) {
-          var stopLooking = false;
-          if (sourceItem.question === text) {
-            item.skipLogic = createSkipLogic(value, sourceItem);
-            stopLooking = true;
-          }
-          return stopLooking;
-        }, ancestors);
+      var found = traverseItemsUpside(item, function(sourceItem) {
+        var stopLooking = false;
+        if(sourceItem.question === text) {
+          item.skipLogic = createSkipLogic(value, sourceItem);
+          stopLooking = true;
+        }
+        return stopLooking;
+      }, ancestors);
+
+      // Failed to locate source. Delete skipLogic
+      if(found === false) {
+        delete item.skipLogic;
       }
     }
 
@@ -595,7 +596,9 @@ function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
 
     if(!stop) {
       // Recurse through ancestors
-      traverseItemsUpside(parent, visitCallback, ancestors);
+      stop = traverseItemsUpside(parent, visitCallback, ancestors);
     }
   }
+
+  return stop;
 }

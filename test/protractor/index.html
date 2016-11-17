@@ -100,6 +100,7 @@
       })
       .controller('lformsTestController', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
+        var objectUrl = null;
         if(typeof $routeParams.testFormsPath !== 'undefined' && $routeParams.testFormsPath === 'cde') {
           $scope.testForm = 'https://cde.nlm.nih.gov/form/' + $routeParams.tinyId;
           $scope.chb = $routeParams.raw === "raw" ? true : false;
@@ -112,6 +113,39 @@
           hideHeader: false
         };
 
+
+        /**
+         * Handle export button
+         *
+         */
+        $scope.export = function() {
+
+          var content = JSON.stringify($scope.rawLFData, null, 2);
+          var blob = new Blob([content], {type: 'application/json;charset=utf-8'});
+          var exportFileName = $scope.testForm ? $scope.testForm :
+                               'convertedForm';
+
+
+          exportFileName = exportFileName.replace(/^.*[\/\\]([^\/\\]+)$/, '$1');
+
+          if(exportFileName.search(/\.json$/) < 0) {
+            exportFileName = exportFileName + '.json';
+          }
+
+
+
+          // Use hidden anchor to do file download.
+          var downloadLink = angular.element(document.getElementById('exportAnchor'));
+          var urlFactory = (window.URL || window.webkitURL);
+          if(objectUrl != null) {
+            // First release any resources on existing object url
+            urlFactory.revokeObjectURL(objectUrl);
+          }
+          objectUrl = urlFactory.createObjectURL(blob);
+          downloadLink.attr('href', objectUrl);
+          downloadLink.attr('download', exportFileName);
+          downloadLink[0].click();
+        };
 
         $scope.setLfData = function() {
           var converter = new LFormsConverter();
@@ -146,6 +180,8 @@
       <option value="test/712ArJSHYl.json">Short Form 36-Item Health Survey (SF-36)</option>
     </select>
     <label><input type="checkbox" ng-model="chb">Raw json</label>
+    <button ng-click="export()">Export</button>
+    <a target="_self" id="exportAnchor" class="hide">Export</a>
 
     <div ng-show="error" class="error-message">{{error}}</div>
 
