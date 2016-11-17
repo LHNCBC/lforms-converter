@@ -432,7 +432,7 @@ function doSkipLogic(root) {
       var text = tokens[0];
       var value = tokens[1];
 
-      traverseItemsUpside(item, function(sourceItem) {
+      var found = traverseItemsUpside(item, function(sourceItem) {
         var stopLooking = false;
         if(sourceItem.question === text) {
           item.skipLogic = createSkipLogic(value, sourceItem);
@@ -440,6 +440,11 @@ function doSkipLogic(root) {
         }
         return stopLooking;
       }, ancestors);
+
+      // Failed to locate source. Delete skipLogic
+      if(found === false) {
+        delete item.skipLogic;
+      }
 
     }
 
@@ -593,7 +598,9 @@ function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
 
     if(!stop) {
       // Recurse through ancestors
-      traverseItemsUpside(parent, visitCallback, ancestors);
+      stop = traverseItemsUpside(parent, visitCallback, ancestors);
     }
   }
+
+  return stop;
 }
