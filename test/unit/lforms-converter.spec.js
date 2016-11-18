@@ -147,4 +147,15 @@ describe('Test lforms-converter', function() {
       }, testNodeForUpsideTraversalFail.ancestors)}).toThrow(new TypeError('Invalid ancestral path'));
     });
   });
+
+  it('should test skip logic empty condition', function(done) {
+    converter = new LFormsConverter();
+    converter.convert('test/mktzfTiYx.json', function(lfData) {
+      //lfData.items[0].items[1].skipLogic.condition is "" in the source.
+      expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
+      done();
+    }, function(err) {
+      done(err);
+    });
+  });
 });
