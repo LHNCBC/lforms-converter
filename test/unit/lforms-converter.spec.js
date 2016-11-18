@@ -158,4 +158,16 @@ describe('Test lforms-converter', function() {
       done(err);
     });
   });
+
+  it('should test remove skip logic if source field is not found.', function(done) {
+    converter = new LFormsConverter();
+    converter.convert('test/invalid-skiplogic-source.json', function(lfData) {
+      //lfData.items[0].items[1].skipLogic.condition is '"Rac" = "Not reported"' in the source.
+      expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
+      done();
+    }, function(err) {
+      done(err);
+    });
+  });
+
 });
