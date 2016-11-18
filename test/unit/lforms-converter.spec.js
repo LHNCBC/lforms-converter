@@ -148,7 +148,7 @@ describe('Test lforms-converter', function() {
     });
   });
 
-  it('should test skip logic empty condition', function(done) {
+  it('should remove skip logic on empty condition', function(done) {
     converter = new LFormsConverter();
     converter.convert('test/mktzfTiYx.json', function(lfData) {
       //lfData.items[0].items[1].skipLogic.condition is "" in the source.
@@ -159,7 +159,7 @@ describe('Test lforms-converter', function() {
     });
   });
 
-  it('should test remove skip logic if source field is not found.', function(done) {
+  it('should remove skip logic if source field is not found.', function(done) {
     converter = new LFormsConverter();
     converter.convert('test/invalid-skiplogic-source.json', function(lfData) {
       //lfData.items[0].items[1].skipLogic.condition is '"Rac" = "Not reported"' in the source.
