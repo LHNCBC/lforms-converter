@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [2.3.1] - 2016-11-21
+### Fixed
+- Fixed empty skip logic condition problem.
+
 ## [2.3.0] - 2016-09-15
 ### Added
 - Support for display of answer list items in a matrix of radio/checkbox controls.
