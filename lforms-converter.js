@@ -413,7 +413,6 @@ function createDataType(question) {
   return ret;
 }
 
-
 /**
  * Convert skip logic object to our format.
  *
@@ -424,23 +423,32 @@ function doSkipLogic(root) {
 
   traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
-      // This is target item. Parse 'condition' to look for source item
-      var tokens = item.skipLogic.condition.split('=');
-      tokens = _.each(tokens, function(a, ind, arr) {
-        arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
-      });
-      var text = tokens[0];
-      var value = tokens[1];
+      if(!item.skipLogic.condition) {
+        delete item.skipLogic;
+      }
+      else {
+        // This is target item. Parse 'condition' to look for source item
+        var tokens = item.skipLogic.condition.split('=');
+        tokens = _.each(tokens, function(a, ind, arr) {
+          arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
+        });
+        var text = tokens[0];
+        var value = tokens[1];
 
-      traverseItemsUpside(item, function(sourceItem) {
-        var stopLooking = false;
-        if(sourceItem.question === text) {
-          item.skipLogic = createSkipLogic(value, sourceItem);
-          stopLooking = true;
+        var found = traverseItemsUpside(item, function(sourceItem) {
+          var stopLooking = false;
+          if(sourceItem.question === text) {
+            item.skipLogic = createSkipLogic(value, sourceItem);
+            stopLooking = true;
+          }
+          return stopLooking;
+        }, ancestors);
+
+        // Failed to locate source. Delete skipLogic
+        if(found === false) {
+          delete item.skipLogic;
         }
-        return stopLooking;
-      }, ancestors);
-
+      } 
     }
 
     return false; // Continue traversal for all skipLogic nodes
@@ -593,7 +601,9 @@ function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
 
     if(!stop) {
       // Recurse through ancestors
-      traverseItemsUpside(parent, visitCallback, ancestors);
+      stop = traverseItemsUpside(parent, visitCallback, ancestors);
     }
   }
+
+  return stop;
 }

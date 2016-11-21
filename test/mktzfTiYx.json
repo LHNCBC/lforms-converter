@@ -1,0 +1,1248 @@
+{
+  "_id": "582b3b4b23bfb2f71a4b4581",
+  "updated": "2016-11-15T16:43:55.623Z",
+  "tinyId": "mktzfTiYx",
+  "created": "2015-09-28T18:41:35.358Z",
+  "isCopyrighted": false,
+  "__v": 0,
+  "referenceDocuments": [],
+  "displayProfiles": [],
+  "classification": [
+    {
+      "elements": [
+        {
+          "name": "Misc Forms",
+          "elements": []
+        },
+        {
+          "name": "NINDS TEST",
+          "elements": []
+        }
+      ],
+      "stewardOrg": {
+        "name": "TEST"
+      }
+    }
+  ],
+  "formElements": [
+    {
+      "label": "Section 1",
+      "elementType": "section",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "Race",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "American Indian or Alaska Native",
+                "valueMeaningName": "A person having origins in any of the original peoples of North and South America (including Central America) , and who maintains tribal affiliation or community attachment."
+              },
+              {
+                "permissibleValue": "Asian",
+                "valueMeaningName": "A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent including, for example, Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam."
+              },
+              {
+                "permissibleValue": "Black or African-American",
+                "valueMeaningName": "A person having origins in any of the black racial groups of Africa. Terms such as �Haitian� or �Negro� can be used in addition to �Black or African American.�"
+              },
+              {
+                "permissibleValue": "Native Hawaiian or Other Pacific Islander",
+                "valueMeaningName": "A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands."
+              },
+              {
+                "permissibleValue": "White",
+                "valueMeaningName": "A person having origins in any of the original peoples of Europe, the Middle East, or North Africa."
+              },
+              {
+                "permissibleValue": "Unknown",
+                "valueMeaningName": "Could not be determined or unsure"
+              },
+              {
+                "permissibleValue": "Not Reported",
+                "valueMeaningName": "Not provided or unavailable"
+              },
+              {
+                "permissibleValue": "Not reported",
+                "valueMeaningName": "Not reported"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "6XCcMn_EP9k",
+              "version": "3",
+              "name": "Race USA category",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C00030",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "RaceUSACat"
+                },
+                {
+                  "source": "caDSR",
+                  "id": "2192199"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "American Indian or Alaska Native",
+                  "valueMeaningName": "A person having origins in any of the original peoples of North and South America (including Central America) , and who maintains tribal affiliation or community attachment."
+                },
+                {
+                  "permissibleValue": "Asian",
+                  "valueMeaningName": "A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent including, for example, Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam."
+                },
+                {
+                  "permissibleValue": "Black or African-American",
+                  "valueMeaningName": "A person having origins in any of the black racial groups of Africa. Terms such as �Haitian� or �Negro� can be used in addition to �Black or African American.�"
+                },
+                {
+                  "permissibleValue": "Native Hawaiian or Other Pacific Islander",
+                  "valueMeaningName": "A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands."
+                },
+                {
+                  "permissibleValue": "White",
+                  "valueMeaningName": "A person having origins in any of the original peoples of Europe, the Middle East, or North Africa."
+                },
+                {
+                  "permissibleValue": "Unknown",
+                  "valueMeaningName": "Could not be determined or unsure"
+                },
+                {
+                  "permissibleValue": "Not Reported",
+                  "valueMeaningName": "Not provided or unavailable"
+                },
+                {
+                  "permissibleValue": "Not reported",
+                  "valueMeaningName": "Not reported"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "instructions": {
+            "valueFormat": "html",
+            "value": "<h3>HTML Instructions</h3><p><strike>strike test</strike></p>"
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "Alcohol current use indicator",
+          "skipLogic": {
+            "condition": ""
+          },
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "Yes",
+                "valueMeaningName": "Yes",
+                "valueMeaningDefinition": "Yes"
+              },
+              {
+                "permissibleValue": "No",
+                "valueMeaningName": "No",
+                "valueMeaningDefinition": "No"
+              },
+              {
+                "permissibleValue": "Unknown",
+                "valueMeaningName": "Unknown",
+                "valueMeaningDefinition": "Unknown"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "4pjhjr5eGQJ",
+              "version": "3",
+              "name": "Alcohol current use indicator",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C00705",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "AlcCurntUseInd"
+                },
+                {
+                  "source": "caDSR",
+                  "id": "3171540"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "Yes",
+                  "valueMeaningName": "Yes",
+                  "valueMeaningDefinition": "Yes"
+                },
+                {
+                  "permissibleValue": "No",
+                  "valueMeaningName": "No",
+                  "valueMeaningDefinition": "No"
+                },
+                {
+                  "permissibleValue": "Unknown",
+                  "valueMeaningName": "Unknown",
+                  "valueMeaningDefinition": "Unknown"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "form",
+          "label": "Depression – Short Form 6a",
+          "skipLogic": {
+            "condition": " \"Alcohol current use indicator\" = \"Yes\" OR \"Alcohol current use indicator\" = \"Unknown\""
+          },
+          "formElements": [
+            {
+              "elementType": "section",
+              "label": "In the past 7 days...",
+              "section": {
+                "displayAsMatrix": true
+              },
+              "formElements": [
+                {
+                  "elementType": "question",
+                  "label": "I felt worthless",
+                  "_id": "55d74402748e653826fde019",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt worthless",
+                      "tinyId": "7JKFguku3JQl",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP04"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61953-6"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                },
+                {
+                  "elementType": "question",
+                  "label": "I felt helpless",
+                  "_id": "55d74402748e653826fde018",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt helpless",
+                      "tinyId": "QyoFgdk_217g",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP06"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61955-1"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                },
+                {
+                  "elementType": "question",
+                  "label": "I felt depressed",
+                  "_id": "55d74402748e653826fde017",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt depressed",
+                      "tinyId": "7y6Fguku3J7l",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP29"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61967-6"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                },
+                {
+                  "elementType": "question",
+                  "label": "I felt hopeless",
+                  "_id": "55d74402748e653826fde016",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt hopeless",
+                      "tinyId": "Xkycx_ydnJ7g",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP41"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61973-4"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                },
+                {
+                  "elementType": "question",
+                  "label": "I felt like a failure",
+                  "_id": "55d74402748e653826fde015",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt like a failure",
+                      "tinyId": "X1hFedyunJ7x",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP22"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61962-7"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                },
+                {
+                  "elementType": "question",
+                  "label": "I felt unhappy",
+                  "_id": "55d74402748e653826fde014",
+                  "section": {
+                    "displayAsMatrix": false
+                  },
+                  "formElements": [],
+                  "question": {
+                    "datatype": "Value List",
+                    "answers": [
+                      {
+                        "permissibleValue": "1",
+                        "valueMeaningName": "Never",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA6270-8"
+                      },
+                      {
+                        "permissibleValue": "2",
+                        "valueMeaningName": "Rarely",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10066-1"
+                      },
+                      {
+                        "permissibleValue": "3",
+                        "valueMeaningName": "Sometimes",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10082-8"
+                      },
+                      {
+                        "permissibleValue": "4",
+                        "valueMeaningName": "Often",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA10044-8"
+                      },
+                      {
+                        "permissibleValue": "5",
+                        "valueMeaningName": "Always",
+                        "codeSystemName": "LOINC",
+                        "valueMeaningCode": "LA9933-8"
+                      }
+                    ],
+                    "editable": true,
+                    "required": false,
+                    "uoms": [],
+                    "cde": {
+                      "name": "In the past 7 days I felt unhappy",
+                      "tinyId": "XkCYeu1_hJQe",
+                      "ids": [
+                        {
+                          "source": "Assessment Center",
+                          "id": "EDDEP36"
+                        },
+                        {
+                          "source": "LOINC",
+                          "id": "61971-8"
+                        }
+                      ],
+                      "permissibleValues": [
+                        {
+                          "permissibleValue": "1",
+                          "valueMeaningName": "Never",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA6270-8"
+                        },
+                        {
+                          "permissibleValue": "2",
+                          "valueMeaningName": "Rarely",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10066-1"
+                        },
+                        {
+                          "permissibleValue": "3",
+                          "valueMeaningName": "Sometimes",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10082-8"
+                        },
+                        {
+                          "permissibleValue": "4",
+                          "valueMeaningName": "Often",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA10044-8"
+                        },
+                        {
+                          "permissibleValue": "5",
+                          "valueMeaningName": "Always",
+                          "codeSystemName": "LOINC",
+                          "valueMeaningCode": "LA9933-8"
+                        }
+                      ],
+                      "derivationRules": []
+                    }
+                  },
+                  "hideLabel": false
+                }
+              ],
+              "question": {
+                "answers": [],
+                "editable": true,
+                "required": false,
+                "uoms": [],
+                "cde": {
+                  "ids": [],
+                  "permissibleValues": []
+                }
+              },
+              "cardinality": {
+                "min": 0,
+                "max": 1
+              },
+              "hideLabel": false
+            }
+          ],
+          "inForm": {
+            "form": {
+              "tinyId": "X1gT4h_FLe",
+              "name": "Depression – Short Form 6a"
+            }
+          },
+          "question": {
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "ids": [],
+              "permissibleValues": []
+            }
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "In the past 7 days How much did pain interfere with your household chores?",
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "1",
+                "valueMeaningName": "Not at all",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA6568-5"
+              },
+              {
+                "permissibleValue": "2",
+                "valueMeaningName": "A little bit",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13863-8"
+              },
+              {
+                "permissibleValue": "3",
+                "valueMeaningName": "Somewhat",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13909-9"
+              },
+              {
+                "permissibleValue": "4",
+                "valueMeaningName": "Quite a bit",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13902-4"
+              },
+              {
+                "permissibleValue": "5",
+                "valueMeaningName": "Very much",
+                "codeSystemName": "LOINC",
+                "valueMeaningCode": "LA13914-9"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "mJPuydn1mg",
+              "name": "In the past 7 days How much did pain interfere with your household chores?",
+              "ids": [
+                {
+                  "source": "Assessment Center",
+                  "id": "PAININ34"
+                },
+                {
+                  "source": "LOINC",
+                  "id": "61775-3"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Not at all",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA6568-5"
+                },
+                {
+                  "permissibleValue": "2",
+                  "valueMeaningName": "A little bit",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13863-8"
+                },
+                {
+                  "permissibleValue": "3",
+                  "valueMeaningName": "Somewhat",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13909-9"
+                },
+                {
+                  "permissibleValue": "4",
+                  "valueMeaningName": "Quite a bit",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13902-4"
+                },
+                {
+                  "permissibleValue": "5",
+                  "valueMeaningName": "Very much",
+                  "codeSystemName": "LOINC",
+                  "valueMeaningCode": "LA13914-9"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "ids": [],
+          "permissibleValues": []
+        }
+      },
+      "cardinality": {
+        "min": 1,
+        "max": 1
+      },
+      "instructions": {
+        "valueFormat": null,
+        "value": "The following are instructions for section 1"
+      }
+    },
+    {
+      "label": "Section 2",
+      "elementType": "section",
+      "formElements": [
+        {
+          "elementType": "question",
+          "label": "Birth date",
+          "formElements": [],
+          "question": {
+            "datatype": "Date",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "OtsN78xANu1",
+              "version": "3",
+              "name": "Birth date",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C00007",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "BirthDate"
+                },
+                {
+                  "source": "caDSR",
+                  "id": "793"
+                }
+              ],
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "Gender type",
+          "skipLogic": {
+            "condition": "\"Birth date\" > \"1995\""
+          },
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "Female",
+                "valueMeaningName": "Female"
+              },
+              {
+                "permissibleValue": "Male",
+                "valueMeaningName": "Male"
+              },
+              {
+                "permissibleValue": "Unknown",
+                "valueMeaningName": "Unknown"
+              },
+              {
+                "permissibleValue": "Unspecified",
+                "valueMeaningName": "Undifferentiated/Indeterminant/Intersex"
+              },
+              {
+                "permissibleValue": "Not reported",
+                "valueMeaningName": "Not reported"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "c15vK97pK5X",
+              "version": "3",
+              "name": "Gender type",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C00035",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "GenderTyp"
+                },
+                {
+                  "source": "caDSR",
+                  "id": "2200604"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "Female",
+                  "valueMeaningName": "Female"
+                },
+                {
+                  "permissibleValue": "Male",
+                  "valueMeaningName": "Male"
+                },
+                {
+                  "permissibleValue": "Unknown",
+                  "valueMeaningName": "Unknown"
+                },
+                {
+                  "permissibleValue": "Unspecified",
+                  "valueMeaningName": "Undifferentiated/Indeterminant/Intersex"
+                },
+                {
+                  "permissibleValue": "Not reported",
+                  "valueMeaningName": "Not reported"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "Alcohol blood level measurement",
+          "skipLogic": {
+            "condition": "\"Gender type\" = \"Female\""
+          },
+          "formElements": [],
+          "question": {
+            "datatype": "Number",
+            "answers": [],
+            "editable": true,
+            "required": false,
+            "uoms": [
+              "milligram of alcohol per 100 milliliters of blood"
+            ],
+            "cde": {
+              "tinyId": "4usq1aP9F1W",
+              "version": "3",
+              "name": "Alcohol blood level measurement",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C01716",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "AlchBldLvlMeasr"
+                }
+              ],
+              "permissibleValues": [],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        },
+        {
+          "elementType": "question",
+          "label": "Alcohol blood test performed indicator",
+          "skipLogic": {
+            "condition": "\"Alcohol blood level measurement\" > \"5\""
+          },
+          "formElements": [],
+          "question": {
+            "datatype": "Value List",
+            "answers": [
+              {
+                "permissibleValue": "Yes",
+                "valueMeaningName": "Yes",
+                "valueMeaningDefinition": "Yes"
+              },
+              {
+                "permissibleValue": "No",
+                "valueMeaningName": "No",
+                "valueMeaningDefinition": "No"
+              },
+              {
+                "permissibleValue": "Unknown",
+                "valueMeaningName": "Unknown",
+                "valueMeaningDefinition": "Unknown"
+              }
+            ],
+            "editable": true,
+            "required": false,
+            "uoms": [],
+            "cde": {
+              "tinyId": "9vtAg9_1zAU",
+              "version": "3",
+              "name": "Alcohol blood test performed indicator",
+              "ids": [
+                {
+                  "source": "NINDS",
+                  "id": "C01715",
+                  "version": "3"
+                },
+                {
+                  "source": "NINDS Variable Name",
+                  "id": "AlchBldTstPerformInd"
+                }
+              ],
+              "permissibleValues": [
+                {
+                  "permissibleValue": "Yes",
+                  "valueMeaningName": "Yes",
+                  "valueMeaningDefinition": "Yes"
+                },
+                {
+                  "permissibleValue": "No",
+                  "valueMeaningName": "No",
+                  "valueMeaningDefinition": "No"
+                },
+                {
+                  "permissibleValue": "Unknown",
+                  "valueMeaningName": "Unknown",
+                  "valueMeaningDefinition": "Unknown"
+                }
+              ],
+              "derivationRules": []
+            }
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          },
+          "hideLabel": false
+        }
+      ],
+      "question": {
+        "answers": [],
+        "editable": true,
+        "required": false,
+        "uoms": [],
+        "cde": {
+          "ids": [],
+          "permissibleValues": []
+        }
+      },
+      "cardinality": {
+        "min": 1,
+        "max": 1
+      }
+    }
+  ],
+  "updatedBy": {
+    "userId": "543592a2ca0aeea96df24299",
+    "username": "ludetc"
+  },
+  "createdBy": {
+    "userId": "543592a2ca0aeea96df24299",
+    "username": "ludetc"
+  },
+  "history": [
+    "569fbe0b37be18b777f3db7a",
+    "56f2ec161512050507b64362",
+    "56fc12bddf5a05fd063d98cc",
+    "5714f79f89df6a6358fb7c81",
+    "5714f7e589df6a6358fb7c97",
+    "5714f81189df6a6358fb7ca9",
+    "575713af08c187180d4a23b0",
+    "57f697158f0f52e062991293",
+    "57fd32fb8f0f52e06299f3cd",
+    "57fe59d22868699953f86332",
+    "57fe5a112868699953f86344",
+    "582b3af823bfb2f71a4b455e",
+    "582b3b1923bfb2f71a4b4571"
+  ],
+  "comments": [],
+  "attachments": [],
+  "ids": [],
+  "properties": [],
+  "registrationState": {
+    "registrationStatus": "Incomplete"
+  },
+  "sources": [],
+  "stewardOrg": {
+    "name": "TEST"
+  },
+  "naming": [
+    {
+      "designation": "Christophe Test 1",
+      "definition": "test form",
+      "context": {
+        "contextName": "Health",
+        "acceptability": "preferred"
+      }
+    }
+  ]
+}

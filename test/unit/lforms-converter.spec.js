@@ -147,4 +147,27 @@ describe('Test lforms-converter', function() {
       }, testNodeForUpsideTraversalFail.ancestors)}).toThrow(new TypeError('Invalid ancestral path'));
     });
   });
+
+  it('should remove skip logic on empty condition', function(done) {
+    converter = new LFormsConverter();
+    converter.convert('test/mktzfTiYx.json', function(lfData) {
+      //lfData.items[0].items[1].skipLogic.condition is "" in the source.
+      expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
+      done();
+    }, function(err) {
+      done(err);
+    });
+  });
+
+  it('should remove skip logic if source field is not found.', function(done) {
+    converter = new LFormsConverter();
+    converter.convert('test/invalid-skiplogic-source.json', function(lfData) {
+      //lfData.items[0].items[1].skipLogic.condition is '"Rac" = "Not reported"' in the source.
+      expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
+      done();
+    }, function(err) {
+      done(err);
+    });
+  });
+
 });
