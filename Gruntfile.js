@@ -118,6 +118,11 @@ module.exports = function (grunt) {
       options : {
         specs : 'test/unit/**/*.spec.js',
         vendor: [
+          'parser/ast.js',
+          'parser/syntax_error.js',
+          'parser/parser.js',
+          'parser/evaluator.js',
+          'parser/skl-condition-parser.js',
           'bower_components/oboe/dist/oboe-browser.js',
           'bower_components/traverse/traverse.js',
           'bower_components/lodash/lodash.js'
@@ -191,6 +196,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test:unit', [
     'wiredep',
+    'generateParser',
     'jasmine'
   ]);
 
@@ -201,6 +207,17 @@ module.exports = function (grunt) {
     'protractor',
     'nsp'
   ]);
+
+  grunt.registerTask('generateParser', function() {
+    grunt.log.ok('Generate parser.js');
+    var exec = require('child_process').exec;
+    var cb = this.async();
+    exec('./node_modules/.bin/jison -o parser/parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
+      grunt.log.ok(stdout);
+      cb();
+    });
+  });
+
 
   grunt.registerTask('default', [
     'newer:jshint',
