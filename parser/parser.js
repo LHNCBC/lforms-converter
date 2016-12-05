@@ -89,16 +89,13 @@ break;
 case 2: case 7: case 12: case 13: case 14: case 15: case 16:
  this.$ = $$[$0]; 
 break;
-case 3:
- this.$ = new ast.And(new ast.Token($$[$0-1]), $$[$0-2], $$[$0]); 
-break;
-case 4:
- this.$ = new ast.Or(new ast.Token($$[$0-1]), $$[$0-2], $$[$0]); 
+case 3: case 4:
+ this.$ = new ast.Bool(new ast.Token($$[$0-1]), $$[$0-2], $$[$0]); 
 break;
 case 5:
  this.$ = new ast.Not(new ast.Token($$[$0-1]), $$[$0]); 
 break;
-case 6: case 10: case 11:
+case 6:
  this.$ = $$[$0-1]; 
 break;
 case 8:
@@ -107,9 +104,12 @@ break;
 case 9:
  this.$ = new ast.Var(new ast.Token($$[$0])); 
 break;
+case 10: case 11:
+ this.$ = new ast.Var(new ast.Token($$[$0-1])); 
+break;
 }
 },
-table: [{3:1,4:2,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{1:[3]},{5:[1,10],7:$V5,8:$V6},o($V7,[2,2]),{4:13,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{4:14,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},o($V7,[2,7],{13:15,17:[1,16],18:[1,17],19:[1,18],20:[1,19],21:[1,20]}),o($V8,[2,9]),{14:[1,21]},{14:[1,22]},{1:[2,1]},{4:23,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{4:24,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},o($V7,[2,5]),{7:$V5,8:$V6,11:[1,25]},{12:26,14:$V2,15:$V3,16:$V4},o($V9,[2,12]),o($V9,[2,13]),o($V9,[2,14]),o($V9,[2,15]),o($V9,[2,16]),{15:[1,27]},{16:[1,28]},o($V7,[2,3]),o([5,8,11],[2,4],{7:$V5}),o($V7,[2,6]),o($V7,[2,8]),o($V8,[2,10]),o($V8,[2,11])],
+table: [{3:1,4:2,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{1:[3]},{5:[1,10],7:$V5,8:$V6},o($V7,[2,2]),{4:13,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{4:14,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},o($V7,[2,7],{13:15,17:[1,16],18:[1,17],19:[1,18],20:[1,19],21:[1,20]}),o($V8,[2,9]),{14:[1,21]},{14:[1,22]},{1:[2,1]},{4:23,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},{4:24,6:3,9:$V0,10:$V1,12:6,14:$V2,15:$V3,16:$V4},o($V7,[2,5]),{7:$V5,8:$V6,11:[1,25]},{12:26,14:$V2,15:$V3,16:$V4},o($V9,[2,12]),o($V9,[2,13]),o($V9,[2,14]),o($V9,[2,15]),o($V9,[2,16]),{15:[1,27]},{16:[1,28]},o($V7,[2,3]),o($V7,[2,4]),o($V7,[2,6]),o($V7,[2,8]),o($V8,[2,10]),o($V8,[2,11])],
 defaultActions: {10:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -263,12 +263,15 @@ parse: function parse(input) {
 }};
 
 
-// Load our AST code
-//var ast = require('./ast');
-
 // Install more detailed error reporting
-//var SyntaxError = require('./syntax_error');
-parser.parseError = function parseError(message, hash) {
+function SyntaxError(message, hash) {
+    this.name = "SyntaxError";
+    this.message = message;
+    this.hash = hash;
+}
+SyntaxError.prototype = Error.prototype;
+
+parser.parseError = function(message, hash) {
     throw new SyntaxError(message, hash);
 };
 

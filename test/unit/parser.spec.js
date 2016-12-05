@@ -88,7 +88,7 @@ describe('Using Evaluator()', function() {
   });
 });
 
-describe('Using testData with SkipLogicConditionParser()', function() {
+fdescribe('Using testData with SkipLogicConditionParser()', function() {
   for(test in testData) {
     // it() is async. Passing 'test' variable in multiple invocations result in 
     // referring to unpredictable values in the variable. Hence this indirection.
@@ -96,6 +96,12 @@ describe('Using testData with SkipLogicConditionParser()', function() {
       it(input, function() {
         var sklParser = new SkipLogicConditionParser();
         expect(testData[input].expected).toEqual(sklParser.parse(input));
+        if(testData[input].warnings) {
+          expect(testData[input].warnings).toEqual(sklParser.warnings);
+        }
+        if(testData[input].error) {
+          expect(testData[input].error).toEqual(sklParser.error);
+        }
       });
     })(test);
   }

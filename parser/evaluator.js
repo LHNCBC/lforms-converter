@@ -1,4 +1,5 @@
 function Evaluator() {
+  "use strict";
   var self = this;
 
   this.visit_var = function(node, vars) {
@@ -9,12 +10,15 @@ function Evaluator() {
     return self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
   };
 
-  this.visit_and = function(node, vars) {
-    return self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
-  };
-
-  this.visit_or = function(node, vars) {
-    return self.evaluate(node.left, vars) || self.evaluate(node.right, vars);
+  this.visit_bool = function(node, vars) {
+    var ret = false;
+    if(node.token.value === 'AND') {
+      ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
+    }
+    else if(node.token.value === 'OR') {
+      ret = self.evaluate(node.left, vars) || self.evaluate(node.right, vars);
+    }
+    return ret;
   };
 
   this.visit_not = function(node, vars) {

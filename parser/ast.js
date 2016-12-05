@@ -22,23 +22,13 @@ var ast = (function() {
       }
     },
 
-    And: function And(token, left, right) {
+    Bool: function(token, left, right) {
       this.token = token;
       this.left = left;
       this.right = right;
 
       this.accept = function(visitor, args) {
-        return visitor.visit_and(this, args);
-      }
-    },
-
-    Or: function(token, left, right) {
-      this.token = token;
-      this.left = left;
-      this.right = right;
-
-      this.accept = function(visitor, args) {
-        return visitor.visit_or(this, args);
+        return visitor.visit_bool(this, args);
       }
     },
 

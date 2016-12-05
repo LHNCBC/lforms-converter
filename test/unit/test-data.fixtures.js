@@ -75,6 +75,33 @@ var testData = {
       logic: "AND"
     }
   },
+  "@a<=@b AND @c>=@d OR @e=@f": {
+    expected: {
+      conditions: [
+        {
+          source: '@a',
+          trigger: {
+            maxInclusive: '@b'
+          }
+        },
+        {
+          source: '@c',
+          trigger: {
+            minInclusive: '@d'
+          }
+        },
+        {
+          source: '@e',
+          trigger: {
+            value: '@f'
+          }
+        }
+      ],
+      logic: "AND"
+    },
+    warnings: ['Mixed boolean logic encountered. Only either all AND or all OR logic is supported.'],
+    error: null
+  },
   '"@x" = "c"': {
     expected: {
       conditions: [

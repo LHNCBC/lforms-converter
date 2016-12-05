@@ -119,7 +119,6 @@ module.exports = function (grunt) {
         specs : 'test/unit/**/*.spec.js',
         vendor: [
           'parser/ast.js',
-          'parser/syntax_error.js',
           'parser/parser.js',
           'parser/evaluator.js',
           'parser/skl-condition-parser.js',
@@ -212,7 +211,7 @@ module.exports = function (grunt) {
     grunt.log.ok('Generate parser.js');
     var exec = require('child_process').exec;
     var cb = this.async();
-    exec('./node_modules/.bin/jison -o parser/parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
+    exec('rm -f parser/parser.js; ./node_modules/.bin/jison -o parser/parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
       grunt.log.ok(stdout);
       cb();
     });

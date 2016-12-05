@@ -2,6 +2,8 @@ function SkipLogicConditionParser() {
   "use strict";
   var self = this;
   this.skipLogic = null;
+  this.error = null;
+  this.warnings = null;
 
   this.visit_var = function(node, vars) {
     var ret = true;
@@ -55,6 +57,10 @@ function SkipLogicConditionParser() {
       }
       else if(self.skipLogic.logic !== node.token.value) {
         ret = false;
+        if(!self.warnings) {
+          self.warnings = [];
+        }
+        self.warnings.push('Mixed boolean logic encountered. Only either all AND or all OR logic is supported.');
       }
     }
 
@@ -82,14 +88,23 @@ function SkipLogicConditionParser() {
   };
 
   this.parse = function(input) {
-    var expr = parser.parse(input);
-    self.reset();
-    expr.accept(self);
-    return self.getSkipLogic();
+    try {
+      var expr = parser.parse(input);
+      self.reset();
+      expr.accept(self);
+    }
+    catch(ex) {
+      self.error = ex.message;
+    }
+    finally {
+      return self.getSkipLogic();
+    }
   };
   
   this.reset = function() {
-    self.conditions = null;
+    self.skipLogic = null;
+    self.error = null;
+    self.warnings = null;
   };
   
 }
