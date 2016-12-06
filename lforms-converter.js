@@ -36,11 +36,13 @@ _.extend(LFormsConverter.prototype, {
       renameKey(json, 'naming', 'name');
       renameKey(json, 'formElements', 'items');
       // Convert skip logic.
-      doSkipLogic(json);
+      doSkipLogic(json, self);
       // Remove any undefined
       removeArrayElements(json, undefined);
       addAdditionalFields(json, additionalFields);
-      successCallback(json);
+      successCallback(json, self.warnings, self.errors);
+      delete self.warnings;
+      delete self.errors;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -56,6 +58,8 @@ _.extend(LFormsConverter.prototype, {
       if(failCallback) {
         failCallback(errorReport);
       }
+      delete self.warnings;
+      delete self.errors;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -419,7 +423,7 @@ function createDataType(question) {
  * @param {Object} root - The object returned after 'oboe' parsing.
  * @returns {undefined}
  */
-function doSkipLogic(root) {
+function doSkipLogic(root, callerObj) {
 
   var conditionParser = new SkipLogicConditionParser();
   
@@ -430,14 +434,6 @@ function doSkipLogic(root) {
       }
       else {
         // This is target item. Parse 'condition' to look for source item
-        /*
-        var tokens = item.skipLogic.condition.split('=');
-        tokens = _.each(tokens, function(a, ind, arr) {
-          arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
-        });
-        var text = tokens[0];
-        var value = tokens[1];
-*/
         var skipLogic = conditionParser.parse(item.skipLogic.condition);
         if (skipLogic && skipLogic.conditions) {
           for(var i = 0, len = skipLogic.conditions.length; i < len; i++ ) {
@@ -446,28 +442,31 @@ function doSkipLogic(root) {
               var stopLooking = false;
               if(sourceItem.question === condition.source) {
                 condition.source = sourceItem.questionCode;
-
+                // For CWE/CNE change trigger value to trigger.text.
                 if(sourceItem.dataType === 'CWE' || sourceItem.dataType === 'CNE') {
                   condition.trigger.text = condition.trigger.value;
                   delete condition.trigger.value;
                 }
                 
-                //item.skipLogic = createSkipLogic(value, sourceItem);
                 stopLooking = true;
               }
               return stopLooking;
             }, ancestors);
             // Failed to locate source. Delete the condition
             if(found === false) {
+              createError(callerObj, 'Failed to locate condition source "' + condition.source + '" in "' + item.questionCode + '"');
               skipLogic.conditions.splice(i, 1);
             }
           }
 
+          // Check for empty conditions.
           if (skipLogic.conditions.length > 0 ) {
+            // Change logic to ANY or ALL
             skipLogic.logic = skipLogic.logic === 'AND' ? 'ALL' : 'ANY';
             item.skipLogic = skipLogic;
           }
           else {
+            createWarning(callerObj, 'Failed to create skip logic on item "'+ item.questionCode+'"');
             delete item.skipLogic;
           }
         }
@@ -629,4 +628,26 @@ function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
   }
 
   return stop;
+}
+
+function createWarning(obj, warning) {
+  if(obj) {
+    if(!obj.warnings) {
+      obj.warnings = [];
+    }
+    if(warning) {
+      obj.warnings.push(warning);
+    }
+  }
+}
+
+function createError(obj, error) {
+  if(obj) {
+    if(!obj.errors) {
+      obj.errors = [];
+    }
+    if(error) {
+      obj.errors.push(error);
+    }
+  }
 }
