@@ -119,7 +119,7 @@ module.exports = function (grunt) {
         specs : 'test/unit/**/*.spec.js',
         vendor: [
           'parser/ast.js',
-          'parser/parser.js',
+          'parser/skl-parser.js',
           'parser/evaluator.js',
           'parser/skl-condition-parser.js',
           'bower_components/oboe/dist/oboe-browser.js',
@@ -171,6 +171,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/test/protractor/index.html'],
+        includeSelf: true,
         devDependencies: true
       }
     }
@@ -211,7 +212,7 @@ module.exports = function (grunt) {
     grunt.log.ok('Generate parser.js');
     var exec = require('child_process').exec;
     var cb = this.async();
-    exec('rm -f parser/parser.js; ./node_modules/.bin/jison -o parser/parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
+    exec('rm -f parser/skl-parser.js; ./node_modules/.bin/jison -o parser/skl-parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
       grunt.log.ok(stdout);
       cb();
     });

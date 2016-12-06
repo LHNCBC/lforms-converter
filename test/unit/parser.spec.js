@@ -1,6 +1,7 @@
-var parser = parser;
 
 describe('Using Evaluator()', function() {
+  "use strict";
+  var parser = sklParser;
   it('Does it all boolean operators', function() {
     var expr = parser.parse('@a AND @b OR' +
       ' NOT @c');
@@ -28,32 +29,6 @@ describe('Using Evaluator()', function() {
     expect(expr.accept(new Evaluator(), ['@a1A'])).toBeFalsy();
   });
 
-  xit('throws exception on scanner error', function() {
-    var exceptionFunc = function() {
-      parser.parse(      // line,token_start_col
-        "          \n" + // 1
-        "          \n" + // 2
-        "  a       \n" + // 3,3
-        "    ^     \n"   // 4,5
-        //0123456789
-      );
-    };
-    expect(exceptionFunc).toThrowError(
-      "Lexical error on line 4. Unrecognized text.\n" +
-      "...      a           ^     \n" +
-      "---------------------^");
-    try {
-      exceptionFunc();
-      throw new Error('Should fail');
-    } catch(err) {
-      expect(err.hash).toEqual({
-        text: '',
-        token: null,
-        line: 3 // Jison lines are zero-indexed.
-      });
-    }
-  });
-
   it('throws exception on parse error', function() {
     var exceptionFunc = function() {
       parser.parse(
@@ -71,7 +46,7 @@ describe('Using Evaluator()', function() {
       "Parse error on line 6:\n" +
       "...   c            AND\n" +
       "----------------------^\n" +
-      "Expecting 'TOKEN_NOT', 'TOKEN_LPAREN', 'TOKEN_VAR', 'TOKEN_DOUBLE_QUOTE', 'TOKEN_SINGLE_QUOTE', got 'EOF'");
+      "Expecting 'TOKEN_NOT', 'TOKEN_LPAREN', 'TOKEN_STR', 'TOKEN_DOUBLE_QUOTE', 'TOKEN_SINGLE_QUOTE', got 'EOF'");
     try {
       exceptionFunc();
       throw new Error('Should fail');
@@ -82,14 +57,15 @@ describe('Using Evaluator()', function() {
         token: 'EOF',
         line: 5,
         loc: { first_line: 6, last_line: 6, first_column: 9, last_column: 12 },
-        expected: [ '\'TOKEN_NOT\'', '\'TOKEN_LPAREN\'', '\'TOKEN_VAR\'', '\'TOKEN_DOUBLE_QUOTE\'', '\'TOKEN_SINGLE_QUOTE\'' ]
+        expected: [ '\'TOKEN_NOT\'', '\'TOKEN_LPAREN\'', '\'TOKEN_STR\'', '\'TOKEN_DOUBLE_QUOTE\'', '\'TOKEN_SINGLE_QUOTE\'' ]
       });
     }
   });
 });
 
-fdescribe('Using testData with SkipLogicConditionParser()', function() {
-  for(test in testData) {
+describe('Using testData with SkipLogicConditionParser()', function() {
+  "use strict";
+  for(var test in testData) {
     // it() is async. Passing 'test' variable in multiple invocations result in 
     // referring to unpredictable values in the variable. Hence this indirection.
     (function(input) {

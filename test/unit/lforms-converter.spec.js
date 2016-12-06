@@ -115,7 +115,7 @@ describe('Test lforms-converter', function() {
       expect(lfData.template).toEqual('list');
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
   
@@ -155,7 +155,7 @@ describe('Test lforms-converter', function() {
       expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
 
@@ -166,7 +166,7 @@ describe('Test lforms-converter', function() {
       expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
 

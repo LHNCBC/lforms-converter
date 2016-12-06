@@ -421,6 +421,8 @@ function createDataType(question) {
  */
 function doSkipLogic(root) {
 
+  var conditionParser = new SkipLogicConditionParser();
+  
   traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
       if(!item.skipLogic.condition) {
@@ -428,27 +430,48 @@ function doSkipLogic(root) {
       }
       else {
         // This is target item. Parse 'condition' to look for source item
+        /*
         var tokens = item.skipLogic.condition.split('=');
         tokens = _.each(tokens, function(a, ind, arr) {
           arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
         });
         var text = tokens[0];
         var value = tokens[1];
+*/
+        var skipLogic = conditionParser.parse(item.skipLogic.condition);
+        if (skipLogic && skipLogic.conditions) {
+          for(var i = 0, len = skipLogic.conditions.length; i < len; i++ ) {
+            var condition = skipLogic.conditions[i];
+            var found = traverseItemsUpside(item, function(sourceItem) {
+              var stopLooking = false;
+              if(sourceItem.question === condition.source) {
+                condition.source = sourceItem.questionCode;
 
-        var found = traverseItemsUpside(item, function(sourceItem) {
-          var stopLooking = false;
-          if(sourceItem.question === text) {
-            item.skipLogic = createSkipLogic(value, sourceItem);
-            stopLooking = true;
+                if(sourceItem.dataType === 'CWE' || sourceItem.dataType === 'CNE') {
+                  condition.trigger.text = condition.trigger.value;
+                  delete condition.trigger.value;
+                }
+                
+                //item.skipLogic = createSkipLogic(value, sourceItem);
+                stopLooking = true;
+              }
+              return stopLooking;
+            }, ancestors);
+            // Failed to locate source. Delete the condition
+            if(found === false) {
+              skipLogic.conditions.splice(i, 1);
+            }
           }
-          return stopLooking;
-        }, ancestors);
 
-        // Failed to locate source. Delete skipLogic
-        if(found === false) {
-          delete item.skipLogic;
+          if (skipLogic.conditions.length > 0 ) {
+            skipLogic.logic = skipLogic.logic === 'AND' ? 'ALL' : 'ANY';
+            item.skipLogic = skipLogic;
+          }
+          else {
+            delete item.skipLogic;
+          }
         }
-      } 
+      }
     }
 
     return false; // Continue traversal for all skipLogic nodes

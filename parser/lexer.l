@@ -7,8 +7,8 @@
 "'"                            { this.begin('singleQString'); }
 "\""                           { this.begin('doubleQString'); }
 
-<singleQString>(\\.|[^\\'])+   { return 'TOKEN_VAR'; }
-<doubleQString>(\\.|[^\\"])+   { return 'TOKEN_VAR'; }
+<singleQString>(\\.|[^\\'])+   { return 'TOKEN_STR'; }
+<doubleQString>(\\.|[^\\"])+   { return 'TOKEN_STR'; }
 
 <singleQString>"'"             { this.begin('INITIAL'); }
 <doubleQString>"\""            { this.begin('INITIAL'); }
@@ -25,7 +25,7 @@
 "<"                            { return 'TOKEN_LT'; }
 ">"                            { return 'TOKEN_GT'; }
 "="                            { return 'TOKEN_EQ'; }
-[^=<>()"'\s]+                  { return 'TOKEN_VAR'; }
+[^=<>()"'\s]+                  { return 'TOKEN_STR'; }
 <<EOF>>                        { return 'EOF'; }
 
 %%

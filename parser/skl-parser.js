@@ -71,12 +71,12 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var parser = (function(){
+var sklParser = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,7],$V3=[1,8],$V4=[1,9],$V5=[1,11],$V6=[1,12],$V7=[5,7,8,11],$V8=[5,7,8,11,17,18,19,20,21],$V9=[14,15,16];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"expr":4,"EOF":5,"condition_expr":6,"TOKEN_AND":7,"TOKEN_OR":8,"TOKEN_NOT":9,"TOKEN_LPAREN":10,"TOKEN_RPAREN":11,"condition_str":12,"condition_op":13,"TOKEN_VAR":14,"TOKEN_DOUBLE_QUOTE":15,"TOKEN_SINGLE_QUOTE":16,"TOKEN_LTE":17,"TOKEN_GTE":18,"TOKEN_LT":19,"TOKEN_GT":20,"TOKEN_EQ":21,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"TOKEN_AND",8:"TOKEN_OR",9:"TOKEN_NOT",10:"TOKEN_LPAREN",11:"TOKEN_RPAREN",14:"TOKEN_VAR",15:"TOKEN_DOUBLE_QUOTE",16:"TOKEN_SINGLE_QUOTE",17:"TOKEN_LTE",18:"TOKEN_GTE",19:"TOKEN_LT",20:"TOKEN_GT",21:"TOKEN_EQ"},
+symbols_: {"error":2,"expressions":3,"expr":4,"EOF":5,"condition_expr":6,"TOKEN_AND":7,"TOKEN_OR":8,"TOKEN_NOT":9,"TOKEN_LPAREN":10,"TOKEN_RPAREN":11,"condition_str":12,"condition_op":13,"TOKEN_STR":14,"TOKEN_DOUBLE_QUOTE":15,"TOKEN_SINGLE_QUOTE":16,"TOKEN_LTE":17,"TOKEN_GTE":18,"TOKEN_LT":19,"TOKEN_GT":20,"TOKEN_EQ":21,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"TOKEN_AND",8:"TOKEN_OR",9:"TOKEN_NOT",10:"TOKEN_LPAREN",11:"TOKEN_RPAREN",14:"TOKEN_STR",15:"TOKEN_DOUBLE_QUOTE",16:"TOKEN_SINGLE_QUOTE",17:"TOKEN_LTE",18:"TOKEN_GTE",19:"TOKEN_LT",20:"TOKEN_GT",21:"TOKEN_EQ"},
 productions_: [0,[3,2],[4,1],[4,3],[4,3],[4,2],[4,3],[6,1],[6,3],[12,1],[12,3],[12,3],[13,1],[13,1],[13,1],[13,1],[13,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
@@ -665,9 +665,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = parser;
-exports.Parser = parser.Parser;
-exports.parse = function () { return parser.parse.apply(parser, arguments); };
+exports.parser = sklParser;
+exports.Parser = sklParser.Parser;
+exports.parse = function () { return sklParser.parse.apply(sklParser, arguments); };
 exports.main = function commonjsMain(args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');

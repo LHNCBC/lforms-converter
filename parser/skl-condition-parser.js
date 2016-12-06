@@ -89,7 +89,7 @@ function SkipLogicConditionParser() {
 
   this.parse = function(input) {
     try {
-      var expr = parser.parse(input);
+      var expr = sklParser.parse(input);
       self.reset();
       expr.accept(self);
     }

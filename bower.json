@@ -2,6 +2,9 @@
   "name": "lforms-converter",
   "version": "2.3.1",
   "main": [
+    "parser/ast.js",
+    "parser/skl-parser.js",
+    "parser/skl-condition-parser.js",
     "lforms-converter.js"
   ],
   "dependencies": {
@@ -32,4 +35,3 @@
     "tests"
   ]
 }
-

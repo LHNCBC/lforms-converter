@@ -24,9 +24,9 @@ condition_expr
     ;
 
 condition_str
-    : TOKEN_VAR                                       { $$ = new ast.Var(new ast.Token($1)); }
-    | TOKEN_DOUBLE_QUOTE TOKEN_VAR TOKEN_DOUBLE_QUOTE { $$ = new ast.Var(new ast.Token($2)); }
-    | TOKEN_SINGLE_QUOTE TOKEN_VAR TOKEN_SINGLE_QUOTE { $$ = new ast.Var(new ast.Token($2)); }
+    : TOKEN_STR                                       { $$ = new ast.Var(new ast.Token($1)); }
+    | TOKEN_DOUBLE_QUOTE TOKEN_STR TOKEN_DOUBLE_QUOTE { $$ = new ast.Var(new ast.Token($2)); }
+    | TOKEN_SINGLE_QUOTE TOKEN_STR TOKEN_SINGLE_QUOTE { $$ = new ast.Var(new ast.Token($2)); }
     ;
 
 condition_op
