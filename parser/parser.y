@@ -51,5 +51,4 @@ parser.parseError = function(message, hash) {
 };
 
 // Hook up our lexer
-//var lexer = require('./lexer');
 parser.lexer = lexer;

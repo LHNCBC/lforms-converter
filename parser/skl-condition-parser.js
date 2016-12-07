@@ -1,3 +1,7 @@
+/**
+ * A node visitor to traverse AST.It builds the lforms skip logic conditions
+ * as it traverses AST.
+ */
 function SkipLogicConditionParser() {
   "use strict";
   var self = this;
@@ -5,6 +9,14 @@ function SkipLogicConditionParser() {
   this.error = null;
   this.warnings = null;
 
+
+  /**
+   * Process variable
+   * @param node - Node in context
+   * @param vars - Array of possible variables under this node.
+   *               Mainly for testing the extracted variables.
+   * @returns {boolean}
+   */
   this.visit_var = function(node, vars) {
     var ret = true;
     if(vars) {
@@ -13,6 +25,15 @@ function SkipLogicConditionParser() {
     return ret;
   };
 
+
+  /**
+   * Process comparison operator
+   * @param node - Node in context
+   * @param vars - Array of possible variables under this node.
+   *               Mainly for testing the extracted variables.
+   * @returns {boolean}
+   */
+  
   this.visit_comparison_op = function(node, vars) {
     var ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
     if(ret) {
@@ -49,6 +70,14 @@ function SkipLogicConditionParser() {
     return ret;
   };
 
+
+  /**
+   * Process boolean operator
+   * @param node - Node in context
+   * @param vars - Array of possible variables under this node.
+   *               Mainly for testing the extracted variables.
+   * @returns {boolean}
+   */
   this.visit_bool = function(node, vars) {
     var ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
     if(ret) {
@@ -67,26 +96,48 @@ function SkipLogicConditionParser() {
     return ret;
   };
 
-  this.visit_and = function(node, vars) {
-    return self.visit_bool(node, vars);
-  };
 
-  this.visit_or = function(node, vars) {
-    return self.visit_bool(node, vars);
-  };
-
+  /**
+   * Process NOT operator
+   * @param node - Node in context
+   * @param vars - Array of possible variables under this node.
+   *               Mainly for testing the extracted variables.
+   * @returns {boolean}
+   */
   this.visit_not = function(node, vars) {
     return !self.evaluate(node.operand, vars);
   };
 
+
+  /**
+   * Traverse and process the tree further.
+   * 
+   * @param node - Node in context
+   * @param vars - Array of possible variables under this node.
+   *               Mainly for testing the extracted variables.
+   * @returns {boolean}
+   */
   this.evaluate = function(node, vars) {
     return node.accept(self, vars);
   };
 
+
+  /**
+   * Get the skip logic object
+   * 
+   * @returns {null|*}
+   */
   this.getSkipLogic = function() {
     return self.skipLogic;
   };
 
+
+  /**
+   * Parses the input expression and returns the skip logic object.
+   * 
+   * @param input
+   * @returns {null|*}
+   */
   this.parse = function(input) {
     try {
       var expr = sklParser.parse(input);
@@ -94,13 +145,18 @@ function SkipLogicConditionParser() {
       expr.accept(self);
     }
     catch(ex) {
-      self.error = ex.message;
+      // Record the error.
+      self.error = ex.message; 
     }
     finally {
       return self.getSkipLogic();
     }
   };
-  
+
+
+  /**
+   * Reset for possible reuse.
+   */
   this.reset = function() {
     self.skipLogic = null;
     self.error = null;
