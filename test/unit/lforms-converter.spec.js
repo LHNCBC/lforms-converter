@@ -161,11 +161,11 @@ describe('Test lforms-converter', function() {
 
   it('should remove skip logic if source field is not found.', function(done) {
     converter = new LFormsConverter();
-    converter.convert('test/invalid-skiplogic-source.json', function(lfData, warnings, errors) {
+    converter.convert('test/invalid-skiplogic-source.json', function(lfData, warnings) {
       //lfData.items[0].items[1].skipLogic.condition is '"Rac" = "Not reported"' in the source.
       expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
-      expect(warnings[0]).toBe('Failed to create skip logic on item "4pjhjr5eGQJ"');
-      expect(errors[0]).toBe('Failed to locate condition source "Rac" in "4pjhjr5eGQJ"');
+      expect(warnings[0]).toBe('Failed to locate condition source "Rac" in "4pjhjr5eGQJ"');
+      expect(warnings[1]).toBe('Failed to create skip logic on item "4pjhjr5eGQJ"');
       done();
     }, function(err) {
       done.fail(JSON.stringify(err));

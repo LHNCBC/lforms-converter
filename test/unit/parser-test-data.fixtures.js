@@ -99,7 +99,7 @@ var testData = {
       ],
       logic: "AND"
     },
-    warnings: ['Mixed boolean logic encountered. Only either all AND or all OR logic is supported.'],
+    warnings: ['Mixed boolean logic encountered. Only either all "AND" or all "OR" logic is supported.'],
     error: null
   },
   '"@x" = "c"': {
