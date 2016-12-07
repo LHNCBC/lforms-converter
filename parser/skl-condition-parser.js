@@ -60,7 +60,7 @@ function SkipLogicConditionParser() {
         if(!self.warnings) {
           self.warnings = [];
         }
-        self.warnings.push('Mixed boolean logic encountered. Only either all AND or all OR logic is supported.');
+        self.warnings.push('Mixed boolean logic encountered. Only either all "AND" or all "OR" logic is supported.');
       }
     }
 

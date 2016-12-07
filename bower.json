@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "lforms": "^7.6.0",
-    "angular-route": "^1.4.7"
+    "angular-route": "^1.4.7",
+    "angular-sanitize": "^1.5.9"
   },
   "authors": [
     "Ajay Kanduru <akanduru@mail.nih.gov>"

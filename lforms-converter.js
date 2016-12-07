@@ -40,9 +40,8 @@ _.extend(LFormsConverter.prototype, {
       // Remove any undefined
       removeArrayElements(json, undefined);
       addAdditionalFields(json, additionalFields);
-      successCallback(json, self.warnings, self.errors);
+      successCallback(json, self.warnings);
       delete self.warnings;
-      delete self.errors;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -59,7 +58,6 @@ _.extend(LFormsConverter.prototype, {
         failCallback(errorReport);
       }
       delete self.warnings;
-      delete self.errors;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -435,6 +433,9 @@ function doSkipLogic(root, callerObj) {
       else {
         // This is target item. Parse 'condition' to look for source item
         var skipLogic = conditionParser.parse(item.skipLogic.condition);
+        createWarnings(callerObj, conditionParser.error);
+        createWarnings(callerObj, conditionParser.warnings);
+
         if (skipLogic && skipLogic.conditions) {
           for(var i = 0, len = skipLogic.conditions.length; i < len; i++ ) {
             var condition = skipLogic.conditions[i];
@@ -454,7 +455,7 @@ function doSkipLogic(root, callerObj) {
             }, ancestors);
             // Failed to locate source. Delete the condition
             if(found === false) {
-              createError(callerObj, 'Failed to locate condition source "' + condition.source + '" in "' + item.questionCode + '"');
+              createWarnings(callerObj, 'Failed to locate condition source "' + condition.source + '" in "' + item.questionCode + '"');
               skipLogic.conditions.splice(i, 1);
             }
           }
@@ -466,7 +467,7 @@ function doSkipLogic(root, callerObj) {
             item.skipLogic = skipLogic;
           }
           else {
-            createWarning(callerObj, 'Failed to create skip logic on item "'+ item.questionCode+'"');
+            createWarnings(callerObj, 'Failed to create skip logic on item "'+ item.questionCode+'"');
             delete item.skipLogic;
           }
         }
@@ -630,24 +631,13 @@ function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
   return stop;
 }
 
-function createWarning(obj, warning) {
+function createWarnings(obj, warnings) {
   if(obj) {
     if(!obj.warnings) {
       obj.warnings = [];
     }
-    if(warning) {
-      obj.warnings.push(warning);
-    }
-  }
-}
-
-function createError(obj, error) {
-  if(obj) {
-    if(!obj.errors) {
-      obj.errors = [];
-    }
-    if(error) {
-      obj.errors.push(error);
+    if(warnings) {
+      obj.warnings.push(warnings);
     }
   }
 }
