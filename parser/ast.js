@@ -16,8 +16,9 @@ var ast = (function() {
      * 
      * @param value - Value of the token 
      */
-    Token: function(value) {
+    Token: function(value, tokenType) {
       this.value = value;
+      this.type = tokenType;
     },
 
 
@@ -30,7 +31,7 @@ var ast = (function() {
       this.token = token;
 
       this.accept = function(visitor, args) {
-        return visitor.visit_var(this, args);
+        return visitor.visit(this, args);
       }
     },
 
@@ -48,7 +49,7 @@ var ast = (function() {
       this.right = right;
 
       this.accept = function(visitor, args) {
-        return visitor.visit_comparison_op(this, args);
+        return visitor.visit(this, args);
       }
     },
 
@@ -66,7 +67,7 @@ var ast = (function() {
       this.right = right;
 
       this.accept = function(visitor, args) {
-        return visitor.visit_bool(this, args);
+        return visitor.visit(this, args);
       }
     },
 
@@ -82,7 +83,7 @@ var ast = (function() {
       this.operand = operand;
 
       this.accept = function(visitor, args) {
-        return visitor.visit_not(this, args);
+        return visitor.visit(this, args);
       }
     }
   };

@@ -74,7 +74,7 @@ describe('Using testData with SkipLogicConditionParser()', function() {
     // referring to unpredictable values in the variable. Hence this indirection.
     (function(input) {
       it(input, function() {
-        var sklParser = new SkipLogicConditionParser();
+        var sklParser = new LForms.SkipLogicConditionParser();
         expect(testData[input].expected).toEqual(sklParser.parse(input));
         if(testData[input].warnings) {
           expect(testData[input].warnings).toEqual(sklParser.warnings);

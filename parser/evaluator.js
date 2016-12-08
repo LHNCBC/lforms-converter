@@ -9,59 +9,36 @@ function Evaluator() {
   "use strict";
   var self = this;
 
-
   /**
-   * Process Var node
+   * Process the node
    * @param node - Node in context
    * @param vars - Array of possible variables under this node.
    *               Mainly for testing the extracted variables.
    * @returns {boolean}
    */
-  this.visit_var = function(node, vars) {
-    return vars.indexOf(node.token.value) != -1;
-  };
-
-
-  /**
-   * Process comparison node
-   * @param node - Node in context
-   * @param vars - Array of possible variables under this node.
-   *               Mainly for testing the extracted variables.
-   * @returns {boolean}
-   */
-  this.visit_comparison_op = function(node, vars) {
-    return self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
-  };
-
-
-  /**
-   * Process boolean node
-   * @param node - Node in context
-   * @param vars - Array of possible variables under this node.
-   *               Mainly for testing the extracted variables.
-   * @returns {boolean}
-   */
-  this.visit_bool = function(node, vars) {
+  this.visit = function (node, vars) {
     var ret = false;
-    if(node.token.value === 'AND') {
-      ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
+    
+    switch (node.token.type) {
+      case 'TOKEN_STR':
+        ret = vars.indexOf(node.token.value) != -1;
+        break;
+      
+      case 'TOKEN_AND':
+      case 'comparisonOp':
+        ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
+        break;
+      
+      case 'TOKEN_OR':
+        ret = self.evaluate(node.left, vars) || self.evaluate(node.right, vars);
+        break;
+      
+      case 'TOKEN_NOT':
+        ret = !self.evaluate(node.operand, vars);
+        break;
     }
-    else if(node.token.value === 'OR') {
-      ret = self.evaluate(node.left, vars) || self.evaluate(node.right, vars);
-    }
+    
     return ret;
-  };
-
-
-  /**
-   * Process NOT node
-   * @param node - Node in context
-   * @param vars - Array of possible variables under this node.
-   *               Mainly for testing the extracted variables.
-   * @returns {boolean}
-   */
-  this.visit_not = function(node, vars) {
-    return !self.evaluate(node.operand, vars);
   };
 
 

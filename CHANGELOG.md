@@ -3,6 +3,11 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [3.0.0] - 2016-12-09
+### Added
+- Added functionality to parse boolean expressions in skip logic condition from CDE forms
+- Added LForms name space to the converter.
+
 ## [2.3.1] - 2016-11-21
 ### Fixed
 - Fixed empty skip logic condition problem.

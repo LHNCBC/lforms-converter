@@ -1,6 +1,6 @@
 {
   "name": "lforms-converter",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "main": [
     "parser/ast.js",
     "parser/skl-parser.js",

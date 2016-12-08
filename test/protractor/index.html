@@ -155,7 +155,7 @@
         };
 
         $scope.setLfData = function() {
-          var converter = new LFormsConverter();
+          var converter = new LForms.LFormsConverter();
           converter.convert($scope.testForm,
             function(lfData, warnings) {
               $scope.rawLFData = angular.copy(lfData);
