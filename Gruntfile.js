@@ -212,7 +212,9 @@ module.exports = function (grunt) {
     grunt.log.ok('Generate parser.js');
     var exec = require('child_process').exec;
     var cb = this.async();
-    exec('rm -f parser/skl-parser.js; ./node_modules/.bin/jison -o parser/skl-parser.js parser/parser.y parser/lexer.l', {cwd: './'}, function(err, stdout, stderr) {
+    var commandStr = 'rm -f parser/skl-parser.js; ./node_modules/.bin/jison' +
+      ' -o parser/skl-parser.js parser/parser.y parser/lexer.l';
+    exec(commandStr, {cwd: './'}, function(err, stdout, stderr) {
       grunt.log.ok(stdout);
       cb();
     });

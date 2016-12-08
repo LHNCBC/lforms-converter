@@ -1,6 +1,6 @@
 /**
- * Originally copied from https://github.com/cucumber/bool/tree/master/javascript 
- * and modified for this project needs.
+ * Originally copied from javascript part of https://github.com/cucumber/bool
+ * and modified for this project's needs.
  * 
  * Abstract Syntax Tree (AST)
  * Each node has accept method to facilitate a visitor to traverse the tree.

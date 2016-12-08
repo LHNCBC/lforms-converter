@@ -105,7 +105,7 @@ function SkipLogicConditionParser() {
    * @returns {boolean}
    */
   this.visit_not = function(node, vars) {
-    return !self.evaluate(node.operand, vars);
+    return self.evaluate(node.operand, vars);
   };
 
 

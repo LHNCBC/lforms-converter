@@ -2,30 +2,34 @@
 describe('Using Evaluator()', function() {
   "use strict";
   var parser = sklParser;
-  it('Does it all boolean operators', function() {
-    var expr = parser.parse('@a AND @b OR' +
-      ' NOT @c');
+  
+  var exp1 = '@a AND @b OR NOT @c';
+  it(exp1, function() {
+    var expr = parser.parse(exp1);
     expect(expr.accept(new Evaluator(), ['@a', '@b'])).toBeTruthy();
     expect(expr.accept(new Evaluator(), ['@c'])).toBeFalsy();
     expect(expr.accept(new Evaluator(), [])).toBeTruthy();
   });
 
-  it('Does it all boolean operators with all comparison operators', function() {
-    var expr = parser.parse('(@a = @c) AND (@b > @c) OR' +
-      ' NOT (@c = @b)');
+  var exp2 = '(@a = @c) AND (@b > @c) OR NOT (@c = @b)';
+  it(exp2, function() {
+    var expr = parser.parse(exp2);
     expect(expr.accept(new Evaluator(), ['@a', '@b', '@c'])).toBeTruthy();
     expect(expr.accept(new Evaluator(), ['@c', '@b'])).toBeFalsy();
     expect(expr.accept(new Evaluator(), [])).toBeTruthy();
   });
 
-  it('double negation', function() {
-    var expr = parser.parse('NOT NOT @a');
+  // double negation
+  var exp3 = 'NOT NOT @a';
+  it(exp3, function() {
+    var expr = parser.parse(exp3);
     expect(expr.accept(new Evaluator(), ['@a'])).toBeTruthy();
     expect(expr.accept(new Evaluator(), ['@b'])).toBeFalsy();
   });
 
-  it('tag syntax', function() {
-    var expr = parser.parse('NOT @a1A');
+  var exp4 = 'NOT @a1A';
+  it(exp4 + ' is false', function() {
+    var expr = parser.parse(exp4);
     expect(expr.accept(new Evaluator(), ['@a1A'])).toBeFalsy();
   });
 
