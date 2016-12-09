@@ -120,13 +120,15 @@ module.exports = function (grunt) {
         vendor: [
           'parser/ast.js',
           'parser/skl-parser.js',
-          'parser/evaluator.js',
           'parser/skl-condition-parser.js',
           'bower_components/oboe/dist/oboe-browser.js',
           'bower_components/traverse/traverse.js',
           'bower_components/lodash/lodash.js'
         ],
-        helpers: 'test/unit/**/*.fixtures.js'
+        helpers: [
+          'test/unit/evaluator.js',
+          'test/unit/**/*.fixtures.js'
+        ]
       }
     },
 
