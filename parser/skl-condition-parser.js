@@ -174,7 +174,7 @@ if (typeof LForms === 'undefined') {
      */
     this.parse = function(input) {
       try {
-        var expr = sklParser.parse(input);
+        var expr = LForms.sklParser.parse(input);
         self.reset();
         expr.accept(self);
       }

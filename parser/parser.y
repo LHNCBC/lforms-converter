@@ -12,21 +12,21 @@ expressions
 
 expr
     : conditionExpr                  { $$ = $1; }
-    | expr TOKEN_AND expr             { $$ = new ast.Bool(new ast.Token($2, 'TOKEN_AND'), $1, $3); }
-    | expr TOKEN_OR expr              { $$ = new ast.Bool(new ast.Token($2, 'TOKEN_OR'), $1, $3); }
-    | TOKEN_NOT expr %prec UNOT       { $$ = new ast.Not(new ast.Token($1, 'TOKEN_NOT'), $2); }
+    | expr TOKEN_AND expr             { $$ = new LForms.Ast.Bool($2, 'TOKEN_AND', $1, $3); }
+    | expr TOKEN_OR expr              { $$ = new LForms.Ast.Bool($2, 'TOKEN_OR', $1, $3); }
+    | TOKEN_NOT expr %prec UNOT       { $$ = new LForms.Ast.Not($1, 'TOKEN_NOT', $2); }
     | TOKEN_LPAREN expr TOKEN_RPAREN  { $$ = $2; }
     ;
 
 conditionExpr
     : conditionStr                            { $$ = $1; }
-    | conditionStr comparisonOp conditionStr { $$ = new ast.ComparisonOp(new ast.Token($2, 'comparisonOp'), $1, $3); }
+    | conditionStr comparisonOp conditionStr { $$ = new LForms.Ast.ComparisonOp($2, 'comparisonOp', $1, $3); }
     ;
 
 conditionStr
-    : TOKEN_STR                                       { $$ = new ast.Var(new ast.Token($1, 'TOKEN_STR')); }
-    | TOKEN_DOUBLE_QUOTE TOKEN_STR TOKEN_DOUBLE_QUOTE { $$ = new ast.Var(new ast.Token($2, 'TOKEN_STR')); }
-    | TOKEN_SINGLE_QUOTE TOKEN_STR TOKEN_SINGLE_QUOTE { $$ = new ast.Var(new ast.Token($2, 'TOKEN_STR')); }
+    : TOKEN_STR                                       { $$ = new LForms.Ast.Var($1, 'TOKEN_STR'); }
+    | TOKEN_DOUBLE_QUOTE TOKEN_STR TOKEN_DOUBLE_QUOTE { $$ = new LForms.Ast.Var($2, 'TOKEN_STR'); }
+    | TOKEN_SINGLE_QUOTE TOKEN_STR TOKEN_SINGLE_QUOTE { $$ = new LForms.Ast.Var($2, 'TOKEN_STR'); }
     ;
 
 comparisonOp

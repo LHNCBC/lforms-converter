@@ -212,8 +212,12 @@ module.exports = function (grunt) {
     grunt.log.ok('Generate parser.js');
     var exec = require('child_process').exec;
     var cb = this.async();
-    var commandStr = 'rm -f parser/skl-parser.js; ./node_modules/.bin/jison' +
-      ' -o parser/skl-parser.js parser/parser.y parser/lexer.l';
+    
+    var commandStr = 
+      'rm -f parser/skl-parser.js; ' +
+      './node_modules/.bin/jison -m js -o parser/skl-parser.js parser/parser.y parser/lexer.l; ' + 
+      'sed -i "s/^var sklParser /LForms.sklParser /" parser/skl-parser.js;'; // Add name space to generated source. 
+    
     exec(commandStr, {cwd: './'}, function(err, stdout, stderr) {
       grunt.log.ok(stdout);
       cb();

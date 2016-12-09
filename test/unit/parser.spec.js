@@ -1,7 +1,10 @@
+if(typeof LForms === 'undefined') {
+  LForms = {};
+}
 
 describe('Using Evaluator()', function() {
   "use strict";
-  var parser = sklParser;
+  var parser = LForms.sklParser;
   
   var exp1 = '@a AND @b OR NOT @c';
   it(exp1, function() {

@@ -71,7 +71,7 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var sklParser = (function(){
+LForms.sklParser = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,7],$V3=[1,8],$V4=[1,9],$V5=[1,11],$V6=[1,12],$V7=[5,7,8,11],$V8=[5,7,8,11,17,18,19,20,21],$V9=[14,15,16];
 var parser = {trace: function trace() { },
 yy: {},
@@ -90,25 +90,25 @@ case 2: case 7: case 12: case 13: case 14: case 15: case 16:
  this.$ = $$[$0]; 
 break;
 case 3:
- this.$ = new ast.Bool(new ast.Token($$[$0-1], 'TOKEN_AND'), $$[$0-2], $$[$0]); 
+ this.$ = new LForms.Ast.Bool($$[$0-1], 'TOKEN_AND', $$[$0-2], $$[$0]); 
 break;
 case 4:
- this.$ = new ast.Bool(new ast.Token($$[$0-1], 'TOKEN_OR'), $$[$0-2], $$[$0]); 
+ this.$ = new LForms.Ast.Bool($$[$0-1], 'TOKEN_OR', $$[$0-2], $$[$0]); 
 break;
 case 5:
- this.$ = new ast.Not(new ast.Token($$[$0-1], 'TOKEN_NOT'), $$[$0]); 
+ this.$ = new LForms.Ast.Not($$[$0-1], 'TOKEN_NOT', $$[$0]); 
 break;
 case 6:
  this.$ = $$[$0-1]; 
 break;
 case 8:
- this.$ = new ast.ComparisonOp(new ast.Token($$[$0-1], 'comparisonOp'), $$[$0-2], $$[$0]); 
+ this.$ = new LForms.Ast.ComparisonOp($$[$0-1], 'comparisonOp', $$[$0-2], $$[$0]); 
 break;
 case 9:
- this.$ = new ast.Var(new ast.Token($$[$0], 'TOKEN_STR')); 
+ this.$ = new LForms.Ast.Var($$[$0], 'TOKEN_STR'); 
 break;
 case 10: case 11:
- this.$ = new ast.Var(new ast.Token($$[$0-1], 'TOKEN_STR')); 
+ this.$ = new LForms.Ast.Var($$[$0-1], 'TOKEN_STR'); 
 break;
 }
 },
@@ -664,21 +664,3 @@ function Parser () {
 Parser.prototype = parser;parser.Parser = Parser;
 return new Parser;
 })();
-
-
-if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = sklParser;
-exports.Parser = sklParser.Parser;
-exports.parse = function () { return sklParser.parse.apply(sklParser, arguments); };
-exports.main = function commonjsMain(args) {
-    if (!args[1]) {
-        console.log('Usage: '+args[0]+' FILE');
-        process.exit(1);
-    }
-    var source = require('fs').readFileSync(require('path').normalize(args[1]), "utf8");
-    return exports.parser.parse(source);
-};
-if (typeof module !== 'undefined' && require.main === module) {
-  exports.main(process.argv.slice(1));
-}
-}
