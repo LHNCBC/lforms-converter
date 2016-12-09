@@ -9,31 +9,31 @@ describe('Using Evaluator()', function() {
   var exp1 = '@a AND @b OR NOT @c';
   it(exp1, function() {
     var expr = parser.parse(exp1);
-    expect(expr.accept(new Evaluator(), ['@a', '@b'])).toBeTruthy();
-    expect(expr.accept(new Evaluator(), ['@c'])).toBeFalsy();
-    expect(expr.accept(new Evaluator(), [])).toBeTruthy();
+    expect(expr.accept(new LForms.Evaluator(), ['@a', '@b'])).toBeTruthy();
+    expect(expr.accept(new LForms.Evaluator(), ['@c'])).toBeFalsy();
+    expect(expr.accept(new LForms.Evaluator(), [])).toBeTruthy();
   });
 
   var exp2 = '(@a = @c) AND (@b > @c) OR NOT (@c = @b)';
   it(exp2, function() {
     var expr = parser.parse(exp2);
-    expect(expr.accept(new Evaluator(), ['@a', '@b', '@c'])).toBeTruthy();
-    expect(expr.accept(new Evaluator(), ['@c', '@b'])).toBeFalsy();
-    expect(expr.accept(new Evaluator(), [])).toBeTruthy();
+    expect(expr.accept(new LForms.Evaluator(), ['@a', '@b', '@c'])).toBeTruthy();
+    expect(expr.accept(new LForms.Evaluator(), ['@c', '@b'])).toBeFalsy();
+    expect(expr.accept(new LForms.Evaluator(), [])).toBeTruthy();
   });
 
   // double negation
   var exp3 = 'NOT NOT @a';
   it(exp3, function() {
     var expr = parser.parse(exp3);
-    expect(expr.accept(new Evaluator(), ['@a'])).toBeTruthy();
-    expect(expr.accept(new Evaluator(), ['@b'])).toBeFalsy();
+    expect(expr.accept(new LForms.Evaluator(), ['@a'])).toBeTruthy();
+    expect(expr.accept(new LForms.Evaluator(), ['@b'])).toBeFalsy();
   });
 
   var exp4 = 'NOT @a1A';
   it(exp4 + ' is false', function() {
     var expr = parser.parse(exp4);
-    expect(expr.accept(new Evaluator(), ['@a1A'])).toBeFalsy();
+    expect(expr.accept(new LForms.Evaluator(), ['@a1A'])).toBeFalsy();
   });
 
   it('throws exception on parse error', function() {

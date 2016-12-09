@@ -209,7 +209,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('generateParser', function() {
-    grunt.log.ok('Generate parser.js');
+    grunt.log.ok('Generate parser/skl-parser.js');
     var exec = require('child_process').exec;
     var cb = this.async();
     
@@ -219,7 +219,12 @@ module.exports = function (grunt) {
       'sed -i "s/^var sklParser /LForms.sklParser /" parser/skl-parser.js;'; // Add name space to generated source. 
     
     exec(commandStr, {cwd: './'}, function(err, stdout, stderr) {
-      grunt.log.ok(stdout);
+      if(err) {
+        grunt.log.error(err.message);
+      }
+      else {
+        grunt.log.ok(stdout);
+      }
       cb();
     });
   });
