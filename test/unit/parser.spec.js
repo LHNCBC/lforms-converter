@@ -7,6 +7,7 @@ describe('Using Evaluator()', function() {
   var parser = LForms.sklParser;
   
   var exp1 = '@a AND @b OR NOT @c';
+  // ==> (@a AND @b) OR (NOT @c)
   it(exp1, function() {
     var expr = parser.parse(exp1);
     expect(expr.accept(new LForms.Evaluator(), ['@a', '@b'])).toBeTruthy();
@@ -14,9 +15,14 @@ describe('Using Evaluator()', function() {
     expect(expr.accept(new LForms.Evaluator(), [])).toBeTruthy();
   });
 
-  var exp2 = '(@a = @c) AND (@b > @c) OR NOT (@c = @b)';
+  var exp2 = '(@a = @a) AND NOT (@b > @c) OR NOT (@c >= @b)';
+  // ==> ((@a AND @c) AND (NOT (@b > @c))) OR (NOT (@c >= @b))
   it(exp2, function() {
     var expr = parser.parse(exp2);
+    // Evaluator is a test implementation to verify the tree traversal and expression 
+    // validity.
+    // Pass in the list of valid TOKEN_VARs for traversal. Note that any non listed nodes 
+    // visited evaluates to false.
     expect(expr.accept(new LForms.Evaluator(), ['@a', '@b', '@c'])).toBeTruthy();
     expect(expr.accept(new LForms.Evaluator(), ['@c', '@b'])).toBeFalsy();
     expect(expr.accept(new LForms.Evaluator(), [])).toBeTruthy();
@@ -24,6 +30,7 @@ describe('Using Evaluator()', function() {
 
   // double negation
   var exp3 = 'NOT NOT @a';
+  // ==> NOT (NOT @a)
   it(exp3, function() {
     var expr = parser.parse(exp3);
     expect(expr.accept(new LForms.Evaluator(), ['@a'])).toBeTruthy();

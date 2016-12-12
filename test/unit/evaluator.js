@@ -3,7 +3,7 @@
  * and modified for this project needs.
  *
  * A node visitor to traverse and process AST. This is mainly used to test 
- * expressions.
+ * validity of expressions and TOKEN_VARs visited.
  */
 if(typeof LForms === 'undefined') {
   window.LForms = {};
@@ -15,10 +15,12 @@ if(typeof LForms === 'undefined') {
     var self = this;
 
     /**
-     * Process the node
+     * Process the node. Tests tree traversal with the list of valid nodes to visit, 
+     *   and evaluates the expression. Any unlisted nodes visited evaluates to false.
+
      * @param node - Node in context
-     * @param vars - Array of possible variables under this node.
-     *               Mainly for testing the extracted variables.
+     * @param vars - Array of valid TOKEN_VARs to visit. Any unlisted nodes
+     *               are invalid.
      * @returns {boolean}
      */
     this.visit = function (node, vars) {
@@ -30,7 +32,6 @@ if(typeof LForms === 'undefined') {
           break;
 
         case 'TOKEN_AND':
-        case 'comparisonOp':
           ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
           break;
 
@@ -38,6 +39,27 @@ if(typeof LForms === 'undefined') {
           ret = self.evaluate(node.left, vars) || self.evaluate(node.right, vars);
           break;
 
+        case 'comparisonOp':
+          ret = self.evaluate(node.left, vars) && self.evaluate(node.right, vars);
+          switch (node.token.value) {
+            case '=':
+              ret = ret ? (node.left.token.value === node.right.token.value ? true : false) : ret;
+              break;
+            case '<':
+              ret = ret ? (node.left.token.value < node.right.token.value ? true : false) : ret;
+              break;
+            case '>':
+              ret = ret ? (node.left.token.value > node.right.token.value ? true : false) : ret;
+              break;
+            case '>=':
+              ret = ret ? (node.left.token.value >= node.right.token.value ? true : false) : ret;
+              break;
+            case '<=':
+              ret = ret ? (node.left.token.value <= node.right.token.value ? true : false) : ret;
+              break;
+          }
+          break;
+        
         case 'TOKEN_NOT':
           ret = !self.evaluate(node.operand, vars);
           break;

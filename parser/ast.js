@@ -14,6 +14,18 @@ if(typeof LForms === 'undefined') {
 
 (function (LForms) {
   "use strict";
+
+
+  /**
+   * Ast implements all node classes. Every node should implement accept(nodeVisitor, data).
+   *
+   * The nodeVisitor is expected to implement visit(node, data) with the following signature.
+   * 
+   * nodeVisitor.visit(node, data):
+   *   @param node - The node it is visiting.
+   *   @param data - An array of user data passed by the caller.
+   *   @returns {boolean}   
+   */
   LForms.Ast = {
 
 
@@ -37,8 +49,11 @@ if(typeof LForms === 'undefined') {
       
       this.token = new LForms.Ast.Token(value, tokenType);
 
-      this.accept = function(visitor, args) {
-        return visitor.visit(this, args);
+      /**
+       * Mandatory method of node class
+       */
+      this.accept = function(visitor, data) {
+        return visitor.visit(this, data);
       }
     },
 
@@ -55,8 +70,11 @@ if(typeof LForms === 'undefined') {
       this.left = left;
       this.right = right;
 
-      this.accept = function(visitor, args) {
-        return visitor.visit(this, args);
+      /**
+       * Mandatory method of node class
+       */
+      this.accept = function(visitor, data) {
+        return visitor.visit(this, data);
       }
     },
 
@@ -73,8 +91,11 @@ if(typeof LForms === 'undefined') {
       this.left = left;
       this.right = right;
 
-      this.accept = function(visitor, args) {
-        return visitor.visit(this, args);
+      /**
+       * Mandatory method of node class
+       */
+      this.accept = function(visitor, data) {
+        return visitor.visit(this, data);
       }
     },
 
@@ -89,8 +110,11 @@ if(typeof LForms === 'undefined') {
       this.token = new LForms.Ast.Token(value, tokenType);
       this.operand = operand;
 
-      this.accept = function(visitor, args) {
-        return visitor.visit(this, args);
+      /**
+       * Mandatory method of node class
+       */
+      this.accept = function(visitor, data) {
+        return visitor.visit(this, data);
       }
     }
   };
