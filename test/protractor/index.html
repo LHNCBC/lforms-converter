@@ -21,8 +21,11 @@
 
     <style>
       .error-message {
-        color: red;
+        background-color: pink;
         font-weight: bold;
+      }
+      .warnings-message {
+        background-color: yellow;
       }
     </style>
   </head>
@@ -79,13 +82,17 @@
   <script src="../../bower_components/lforms/app/scripts/lib/lforms-data.js"></script>
   <script src="../../bower_components/lforms/app/lforms.tpl.js"></script>
   <script src="../../bower_components/angular-route/angular-route.js"></script>
+  <script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="../../parser/ast.js"></script>
+  <script src="../../parser/skl-parser.js"></script>
+  <script src="../../parser/skl-condition-parser.js"></script>
   <!-- endbower -->
 
   <script src="../../lforms-converter.js"></script>
 
   <!-- lforms test controller -->
   <script type="text/javascript">
-    angular.module('lformsTestApp', ['lformsWidget', 'ngRoute'])
+    angular.module('lformsTestApp', ['lformsWidget', 'ngRoute', 'ngSanitize'])
       .config(function($routeProvider) {
         $routeProvider
           .when('/', {
@@ -148,13 +155,19 @@
         };
 
         $scope.setLfData = function() {
-          var converter = new LFormsConverter();
+          var converter = new LForms.LFormsConverter();
           converter.convert($scope.testForm,
-            function(lfData) {
+            function(lfData, warnings) {
               $scope.rawLFData = angular.copy(lfData);
               $scope.lfData = new LFormsData(lfData);
               $scope.lfData.setTemplateOptions({hideHeader: false});
               $scope.$apply($scope.lfData);
+              if(warnings && warnings.length > 0) {
+                addWarnings(warnings);
+              }
+              else {
+                removeWarnings();
+              }
             },
             function(err) {
               $scope.error = err;
@@ -165,6 +178,26 @@
 
         $scope.getRawJson = function() {
           return JSON.stringify($scope.rawLFData, null, 2);
+        };
+
+
+        addWarnings = function(warnings) {
+          if(!$scope.warnings) {
+            $scope.warnings = [];
+          }
+          $scope.warnings = $scope.warnings.concat(warnings);
+        };
+
+        removeWarnings = function() {
+          $scope.warnings = null;
+        };
+
+        $scope.showWarnings = function() {
+          var ret = null;
+          if($scope.warnings && $scope.warnings.length > 0) {
+            ret = $scope.warnings.join('<br>');
+          }
+          return ret;
         };
 
         $scope.setLfData();
@@ -179,12 +212,14 @@
       <option value="test/Q1S9NhOK8e.json">Form with matrix display</option>
       <option value="test/712ArJSHYl.json">Short Form 36-Item Health Survey (SF-36)</option>
       <option value="test/mktzfTiYx.json">Form with different skip logic conditions</option>
+      <option value="test/invalid-skiplogic-source.json">Form with invalid skip logic source</option>
     </select>
     <label><input type="checkbox" ng-model="chb">Raw json</label>
     <button ng-click="export()">Export</button>
     <a target="_self" id="exportAnchor" class="hide">Export</a>
 
     <div ng-show="error" class="error-message">{{error}}</div>
+    <div ng-show="warnings" class="warnings-message" ng-bind-html="showWarnings()"></div>
 
     <lforms ng-hide="chb" lf-data="lfData" lf-options="lformsOpts"></lforms>
     <pre ng-show="chb">{{getRawJson()}}</pre>

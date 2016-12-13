@@ -1,7 +1,10 @@
 {
   "name": "lforms-converter",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "main": [
+    "parser/ast.js",
+    "parser/skl-parser.js",
+    "parser/skl-condition-parser.js",
     "lforms-converter.js"
   ],
   "dependencies": {
@@ -11,7 +14,8 @@
   },
   "devDependencies": {
     "lforms": "^7.6.0",
-    "angular-route": "^1.4.7"
+    "angular-route": "^1.4.7",
+    "angular-sanitize": "^1.5.9"
   },
   "authors": [
     "Ajay Kanduru <akanduru@mail.nih.gov>"
@@ -32,4 +36,3 @@
     "tests"
   ]
 }
-

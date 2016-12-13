@@ -118,11 +118,17 @@ module.exports = function (grunt) {
       options : {
         specs : 'test/unit/**/*.spec.js',
         vendor: [
+          'parser/ast.js',
+          'parser/skl-parser.js',
+          'parser/skl-condition-parser.js',
           'bower_components/oboe/dist/oboe-browser.js',
           'bower_components/traverse/traverse.js',
           'bower_components/lodash/lodash.js'
         ],
-        helpers: 'test/unit/**/*.fixtures.js'
+        helpers: [
+          'test/unit/evaluator.js',
+          'test/unit/**/*.fixtures.js'
+        ]
       }
     },
 
@@ -167,6 +173,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/test/protractor/index.html'],
+        includeSelf: true,
         devDependencies: true
       }
     }
@@ -191,6 +198,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test:unit', [
     'wiredep',
+    'generateParser',
     'jasmine'
   ]);
 
@@ -201,6 +209,28 @@ module.exports = function (grunt) {
     'protractor',
     'nsp'
   ]);
+
+  grunt.registerTask('generateParser', function() {
+    grunt.log.ok('Generate parser/skl-parser.js');
+    var exec = require('child_process').exec;
+    var cb = this.async();
+    
+    var commandStr = 
+      'rm -f parser/skl-parser.js; ' +
+      './node_modules/.bin/jison -m js -o parser/skl-parser.js parser/parser.y parser/lexer.l; ' + 
+      'sed -i "s/^var sklParser /LForms.sklParser /" parser/skl-parser.js;'; // Add name space to generated source. 
+    
+    exec(commandStr, {cwd: './'}, function(err, stdout, stderr) {
+      if(err) {
+        grunt.log.error(err.message);
+      }
+      else {
+        grunt.log.ok(stdout);
+      }
+      cb();
+    });
+  });
+
 
   grunt.registerTask('default', [
     'newer:jshint',

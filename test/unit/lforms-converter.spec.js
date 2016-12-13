@@ -1,13 +1,15 @@
 /**
  * Created by akanduru on 9/16/15.
  */
+
+(function (LForms) {
 'use strict';
 
 describe('Test lforms-converter', function() {
   var converter = null;
 
   it('should fetch and convert test/bJ5Sm82g8.json', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
       expect(lfData.items.length).toEqual(2);
       expect(lfData.items[0].items.length).toEqual(10);
@@ -21,7 +23,7 @@ describe('Test lforms-converter', function() {
   });
 
   it('should do the same with caller supplied fields', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
       expect(lfData.type).toEqual('XXXXX');
       expect(lfData.template).toEqual('form-view-b');
@@ -34,7 +36,7 @@ describe('Test lforms-converter', function() {
 
 
   it('should convert instructions', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
       expect(lfData.items[0].items[0].codingInstructions).toEqual(
         decodeURIComponent('<p>Sample <b>rich text</b>%C2%A0instructions</p>'));
@@ -46,7 +48,7 @@ describe('Test lforms-converter', function() {
 
 
   it('should convert restrictions', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
       expect(lfData.items[0].items[9].restrictions[0].name).toEqual('minInclusive');
       expect(lfData.items[0].items[9].restrictions[0].value).toEqual(0);
@@ -60,7 +62,7 @@ describe('Test lforms-converter', function() {
 
 
   it('should regard elementType "form" as a section', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/X1WzZIqZBf.json', function(lfData) {
       expect(lfData.items[0].items[0].question).toEqual(
         'Congenital adrenal hyperplasia newborn screening panel');
@@ -73,7 +75,7 @@ describe('Test lforms-converter', function() {
 
 
   it('should convert "required" to min cardinality', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/my8_b85WHM.json', function(lfData) {
       var questionList = lfData.items[0].items;
       var codeToQuestion = {};
@@ -91,7 +93,7 @@ describe('Test lforms-converter', function() {
 
 
   it('should convert "multiselect" to max cardinality', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/my8_b85WHM.json', function(lfData) {
       var questionList = lfData.items[0].items;
       var codeToQuestion = {};
@@ -108,21 +110,21 @@ describe('Test lforms-converter', function() {
   });
 
   it('should convert displayProfiles (matrix display for answer lists)', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/Q1S9NhOK8e.json', function(lfData) {
       expect(lfData.items[0].displayControl).toEqual({questionLayout: 'matrix'});
       expect(lfData.items[1].displayControl).toEqual({questionLayout: 'matrix'});
       expect(lfData.template).toEqual('list');
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
   
   it('should test traverseItems() ', function() {
     var visit = [];
-
-    traverseItems(lformsConverterItemTraversalTree, function(x, ancestors) {
+    converter = new LForms.LFormsConverter();
+    converter.traverseItems(lformsConverterItemTraversalTree, function(x, ancestors) {
       visit.push(x.visit);
       expect(x.expectedPath).toEqual(_.pluck(ancestors, 'thisIndex'));
     }, []);
@@ -135,7 +137,8 @@ describe('Test lforms-converter', function() {
 
     it('should pass with valid input', function() {
       var visit = [];
-      traverseItemsUpside(testNodeForUpsideTraversal6.startingNode, function(x) {
+      converter = new LForms.LFormsConverter();
+      converter.traverseItemsUpside(testNodeForUpsideTraversal6.startingNode, function(x) {
         visit.push(x.visit);
       }, testNodeForUpsideTraversal6.ancestors);
 
@@ -143,31 +146,39 @@ describe('Test lforms-converter', function() {
     });
 
     it('should throw error with invalid starting node', function() {
-      expect(function () {traverseItemsUpside(testNodeForUpsideTraversalFail.startingNode, function(x) {
-      }, testNodeForUpsideTraversalFail.ancestors)}).toThrow(new TypeError('Invalid ancestral path'));
+      expect(function () {
+        var converter = new LForms.LFormsConverter();
+        converter.traverseItemsUpside(
+          testNodeForUpsideTraversalFail.startingNode, 
+          function(x) {}, 
+          testNodeForUpsideTraversalFail.ancestors)
+      }).toThrow(new TypeError('Invalid ancestral path'));
     });
   });
 
   it('should remove skip logic on empty condition', function(done) {
-    converter = new LFormsConverter();
+    converter = new LForms.LFormsConverter();
     converter.convert('test/mktzfTiYx.json', function(lfData) {
       //lfData.items[0].items[1].skipLogic.condition is "" in the source.
       expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
 
   it('should remove skip logic if source field is not found.', function(done) {
-    converter = new LFormsConverter();
-    converter.convert('test/invalid-skiplogic-source.json', function(lfData) {
+    converter = new LForms.LFormsConverter();
+    converter.convert('test/invalid-skiplogic-source.json', function(lfData, warnings) {
       //lfData.items[0].items[1].skipLogic.condition is '"Rac" = "Not reported"' in the source.
       expect(lfData.items[0].items[1].skipLogic).toBe(undefined);
+      expect(warnings[0]).toBe('Failed to locate condition source "Rac" in "4pjhjr5eGQJ"');
+      expect(warnings[1]).toBe('Failed to create skip logic on item "4pjhjr5eGQJ"');
       done();
     }, function(err) {
-      done(err);
+      done.fail(JSON.stringify(err));
     });
   });
 
 });
+})(LForms);

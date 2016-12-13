@@ -1,3 +1,7 @@
+if (typeof LForms === 'undefined')
+  window.LForms = {};
+
+(function(LForms) {
 /**
  *
  * Uses a json streaming parser (oboe) to fetch and transform the input from
@@ -10,9 +14,9 @@
  * Class definition
  */
 
-var   LFormsConverter = function() {};
+LForms.LFormsConverter = function() {};
 
-_.extend(LFormsConverter.prototype, {
+_.extend(LForms.LFormsConverter.prototype, {
 
   /**
    *  API to initiate the parsing
@@ -36,11 +40,12 @@ _.extend(LFormsConverter.prototype, {
       renameKey(json, 'naming', 'name');
       renameKey(json, 'formElements', 'items');
       // Convert skip logic.
-      doSkipLogic(json);
+      doSkipLogic(json, self);
       // Remove any undefined
       removeArrayElements(json, undefined);
       addAdditionalFields(json, additionalFields);
-      successCallback(json);
+      successCallback(json, self.warnings);
+      delete self.warnings;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -56,6 +61,7 @@ _.extend(LFormsConverter.prototype, {
       if(failCallback) {
         failCallback(errorReport);
       }
+      delete self.warnings;
       parser.removeListener('done', success);
       parser.removeListener('fail', failed);
     }
@@ -258,16 +264,101 @@ _.extend(LFormsConverter.prototype, {
     renameKey(param, 'permissibleValue', 'code');
     renameKey(param, 'valueMeaningName', 'text');
     return param;
-  }
+  },
 
+
+  /**
+   * A pre-order traversing for item (equivalent to node of tree) of lforms definition.
+   * @param {Object} item - LForms item node
+   * @callback visitCallback
+   *   Call back method after visiting the node with following arguments
+   *     @param {Object} visited item
+   *     @param {Array} Array of ancestor objects.
+   *     @return {boolean} true if want to stop further traversal.
+   *   Ancestor definition: {parent: parentItem, index: indexOfThisItem}
+   *     where parentItem is an item defined in lforms definition and
+   *     indexOfThisItem is this item's zero based index among its siblings.
+   */
+  traverseItems: function (item, visitCallback, ancestors) {
+    var self = this;
+    var ancestors = ancestors || [];
+    var stop = visitCallback(item, ancestors);
+    if(stop !== true && item.items && item.items.length > 0) {
+      item.items.forEach(function(subItem, ind) {
+        ancestors.push({parent: item, thisIndex: ind});
+        self.traverseItems(subItem, visitCallback, ancestors);
+        ancestors.pop();
+      });
+    }
+  },
+
+
+  /**
+   * Traverse from node in a tree towards ancestral nodes with the following order.
+   * The traversal continues, until callback returns true to stop.
+   *
+   * . Visit the starting node.
+   * . Visit the previous siblings of the starting node, closest to farthest.
+   * . Visit next siblings of starting node, closest to farthest.
+   * . Visit parent node and repeat the above order.
+   * . Repeat the above order until reaching root.
+   *
+   * This is intended to reach source item from target item in lforms definition.
+   *
+   * @param {Object} startingItem - Starting item node to start the backward traversal.
+   * @callback visitCallback
+   *   Call back method after visiting the node with following arguments
+   *     @param {Object} visited item
+   *     Ancestor definition: {parent: parentItem, index: arrayIndexOfparentItem}
+   *     @return {boolean} Return true to stop further traversal.
+   * @param {Array} ancestorsPath - Array of ancestors
+   *   Ancestor definition: {parent: parentItem, index: arrayIndexOfparentItem}
+   *     where parentItem is an item defined in lforms definition
+   */
+  traverseItemsUpside: function (startingItem, visitCallback, ancestorsPath) {
+    var self = this;
+    var stop = visitCallback(startingItem);
+    var ancestors = ancestorsPath.slice();
+    var prevAncestor = ancestors.pop();
+    if(stop !== true && prevAncestor) {
+      var parent = prevAncestor.parent;
+      var index = prevAncestor.thisIndex;
+
+      // Go through siblings first
+      if(!parent.items) {
+        throw new TypeError('Invalid ancestral path');
+      }
+
+      if(typeof(index) !== 'undefined' && index > 0) { // Root exception
+        parent.items.slice(0, index).reverse().some(function(sibling) {
+          stop = visitCallback(sibling);
+          return stop;
+        });
+
+        if(!stop) {
+          parent.items.slice(index+1).some(function(sibling) {
+            stop = visitCallback(sibling);
+            return stop;
+          });
+        }
+      }
+
+      if(!stop) {
+        // Recurse through ancestors
+        stop = self.traverseItemsUpside(parent, visitCallback, ancestors);
+      }
+    }
+
+    return stop;
+  }
 });
+
 
 /**
  ****************************************************************************
  * Some utility functions
  ****************************************************************************
  */
-
 
 /**
  * Add or overwrite optional form fields.
@@ -413,76 +504,69 @@ function createDataType(question) {
   return ret;
 }
 
+
 /**
  * Convert skip logic object to our format.
  *
  * @param {Object} root - The object returned after 'oboe' parsing.
  * @returns {undefined}
  */
-function doSkipLogic(root) {
+function doSkipLogic(root, callerObj) {
 
-  traverseItems(root, function(item, ancestors) {
+  var conditionParser = new LForms.SkipLogicConditionParser();
+  var converter = new LForms.LFormsConverter();
+  
+  converter.traverseItems(root, function(item, ancestors) {
     if(item.skipLogic) {
       if(!item.skipLogic.condition) {
         delete item.skipLogic;
       }
       else {
         // This is target item. Parse 'condition' to look for source item
-        var tokens = item.skipLogic.condition.split('=');
-        tokens = _.each(tokens, function(a, ind, arr) {
-          arr[ind] = a.replace(/^[\s\"]*|[\s\"]*$/g, '');
-        });
-        var text = tokens[0];
-        var value = tokens[1];
+        var skipLogic = conditionParser.parse(item.skipLogic.condition);
+        createWarnings(callerObj, conditionParser.error);
+        createWarnings(callerObj, conditionParser.warnings);
 
-        var found = traverseItemsUpside(item, function(sourceItem) {
-          var stopLooking = false;
-          if(sourceItem.question === text) {
-            item.skipLogic = createSkipLogic(value, sourceItem);
-            stopLooking = true;
+        if (skipLogic && skipLogic.conditions) {
+          for(var i = 0, len = skipLogic.conditions.length; i < len; i++ ) {
+            var condition = skipLogic.conditions[i];
+            var found = converter.traverseItemsUpside(item, function(sourceItem) {
+              var stopLooking = false;
+              if(sourceItem.question === condition.source) {
+                condition.source = sourceItem.questionCode;
+                // For CWE/CNE change trigger value to trigger.text.
+                if(sourceItem.dataType === 'CWE' || sourceItem.dataType === 'CNE') {
+                  condition.trigger.text = condition.trigger.value;
+                  delete condition.trigger.value;
+                }
+                
+                stopLooking = true;
+              }
+              return stopLooking;
+            }, ancestors);
+            // Failed to locate source. Delete the condition
+            if(found === false) {
+              createWarnings(callerObj, 'Failed to locate condition source "' + condition.source + '" in "' + item.questionCode + '"');
+              skipLogic.conditions.splice(i, 1);
+            }
           }
-          return stopLooking;
-        }, ancestors);
 
-        // Failed to locate source. Delete skipLogic
-        if(found === false) {
-          delete item.skipLogic;
+          // Check for empty conditions.
+          if (skipLogic.conditions.length > 0 ) {
+            // Change logic to ANY or ALL
+            skipLogic.logic = skipLogic.logic === 'AND' ? 'ALL' : 'ANY';
+            item.skipLogic = skipLogic;
+          }
+          else {
+            createWarnings(callerObj, 'Failed to create skip logic on item "'+ item.questionCode+'"');
+            delete item.skipLogic;
+          }
         }
-      } 
+      }
     }
 
     return false; // Continue traversal for all skipLogic nodes
   }, []);
-}
-
-
-/**
- * Create skipLogic object based on datatype.
- *
- * @param {String|Number|Date|Object} value - Type depends on the dataType
- * @param {Object} sourceItem - Source of skip logic to get data type and code.
- * @returns {Object} Skip logic object
- */
-function createSkipLogic(value, sourceItem) {
-  // Build skip logic object
-  var ret = {action: 'show', conditions: [{source: sourceItem.questionCode, trigger: {} }]};
-
-  switch(sourceItem.dataType) {
-    case 'CWE':
-    case 'CNE':
-      ret.conditions[0].trigger.text = value;
-      break;
-    case 'REAL':
-      ret.conditions[0].trigger.value = parseFloat(value);
-      break;
-    case 'DT':
-      ret.conditions[0].trigger.value = value.toString();
-      break;
-    default:
-      ret.conditions[0].trigger.value = value;
-  }
-
-  return ret;
 }
 
 
@@ -503,7 +587,6 @@ function removeArrayElements(obj, elem) {
         if(n === elem) {
           return true;
         }
-//        return n === elem;
       });
     }
   });
@@ -526,84 +609,16 @@ function isHttpUrl(aUrl) {
 }
 
 
-/**
- * A pre-order traversing for item (equivalent to node of tree) of lforms definition.
- * @param {Object} item - LForms item node
- * @callback visitCallback
- *   Call back method after visiting the node with following arguments
- *     @param {Object} visited item
- *     @param {Array} Array of ancestor objects.
- *     @return {boolean} true if want to stop further traversal.
- *   Ancestor definition: {parent: parentItem, index: indexOfThisItem}
- *     where parentItem is an item defined in lforms definition and
- *     indexOfThisItem is this item's zero based index among its siblings.
- */
-function traverseItems(item, visitCallback, ancestors) {
-  var ancestors = ancestors || [];
-  var stop = visitCallback(item, ancestors);
-  if(stop !== true && item.items && item.items.length > 0) {
-    item.items.forEach(function(subItem, ind) {
-      ancestors.push({parent: item, thisIndex: ind});
-      traverseItems(subItem, visitCallback, ancestors);
-      ancestors.pop();
-    });
+function createWarnings(obj, warnings) {
+  if(obj) {
+    if(!obj.warnings) {
+      obj.warnings = [];
+    }
+    if(warnings) {
+      obj.warnings.push(warnings);
+    }
   }
 }
 
-/**
- * Traverse from node in a tree towards ancestral nodes with the following order.
- * The traversal continues, until callback returns true to stop.
- *
- * . Visit the starting node.
- * . Visit the previous siblings of the starting node, closest to farthest.
- * . Visit next siblings of starting node, closest to farthest.
- * . Visit parent node and repeat the above order.
- * . Repeat the above order until reaching root.
- *
- * This is intended to reach source item from target item in lforms definition.
- *
- * @param {Object} startingItem - Starting item node to start the backward traversal.
- * @callback visitCallback
- *   Call back method after visiting the node with following arguments
- *     @param {Object} visited item
- *     Ancestor definition: {parent: parentItem, index: arrayIndexOfparentItem}
- *     @return {boolean} Return true to stop further traversal.
- * @param {Array} ancestorsPath - Array of ancestors
- *   Ancestor definition: {parent: parentItem, index: arrayIndexOfparentItem}
- *     where parentItem is an item defined in lforms definition
- */
-function traverseItemsUpside(startingItem, visitCallback, ancestorsPath) {
-  var stop = visitCallback(startingItem);
-  var ancestors = ancestorsPath.slice();
-  var prevAncestor = ancestors.pop();
-  if(stop !== true && prevAncestor) {
-    var parent = prevAncestor.parent;
-    var index = prevAncestor.thisIndex;
+})(LForms);
 
-    // Go through siblings first
-    if(!parent.items) {
-      throw new TypeError('Invalid ancestral path');
-    }
-
-    if(typeof(index) !== 'undefined' && index > 0) { // Root exception
-      parent.items.slice(0, index).reverse().some(function(sibling) {
-        stop = visitCallback(sibling);
-        return stop;
-      });
-
-      if(!stop) {
-        parent.items.slice(index+1).some(function(sibling) {
-          stop = visitCallback(sibling);
-          return stop;
-        });
-      }
-    }
-
-    if(!stop) {
-      // Recurse through ancestors
-      stop = traverseItemsUpside(parent, visitCallback, ancestors);
-    }
-  }
-
-  return stop;
-}
