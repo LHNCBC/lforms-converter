@@ -5,7 +5,7 @@ Third-Party Software Licenses
 This section contains third-party software notices and/or additional
 terms for licensed third-party software components included within LFormsConverter code.
 
-A part of https://github.com/cucumber/bool software is modified and used to fit 
+A part of https://github.com/cucumber/bool software is extracted and modified to fit 
 the project's need. Its license use is as follows:
 
 

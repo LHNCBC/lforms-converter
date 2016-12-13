@@ -265,6 +265,8 @@ _.extend(LForms.LFormsConverter.prototype, {
     renameKey(param, 'valueMeaningName', 'text');
     return param;
   },
+
+
   /**
    * A pre-order traversing for item (equivalent to node of tree) of lforms definition.
    * @param {Object} item - LForms item node
@@ -289,6 +291,7 @@ _.extend(LForms.LFormsConverter.prototype, {
       });
     }
   },
+
 
   /**
    * Traverse from node in a tree towards ancestral nodes with the following order.
@@ -348,16 +351,14 @@ _.extend(LForms.LFormsConverter.prototype, {
 
     return stop;
   }
-
-
 });
+
 
 /**
  ****************************************************************************
  * Some utility functions
  ****************************************************************************
  */
-
 
 /**
  * Add or overwrite optional form fields.
@@ -503,6 +504,7 @@ function createDataType(question) {
   return ret;
 }
 
+
 /**
  * Convert skip logic object to our format.
  *
@@ -569,36 +571,6 @@ function doSkipLogic(root, callerObj) {
 
 
 /**
- * Create skipLogic object based on datatype.
- *
- * @param {String|Number|Date|Object} value - Type depends on the dataType
- * @param {Object} sourceItem - Source of skip logic to get data type and code.
- * @returns {Object} Skip logic object
- */
-function createSkipLogic(value, sourceItem) {
-  // Build skip logic object
-  var ret = {action: 'show', conditions: [{source: sourceItem.questionCode, trigger: {} }]};
-
-  switch(sourceItem.dataType) {
-    case 'CWE':
-    case 'CNE':
-      ret.conditions[0].trigger.text = value;
-      break;
-    case 'REAL':
-      ret.conditions[0].trigger.value = parseFloat(value);
-      break;
-    case 'DT':
-      ret.conditions[0].trigger.value = value.toString();
-      break;
-    default:
-      ret.conditions[0].trigger.value = value;
-  }
-
-  return ret;
-}
-
-
-/**
  * Utility to remove any array elements, traversing in a tree.
  *
  * Mainly intended to remove undefined in arrays generated out of oboe.drop during its
@@ -615,7 +587,6 @@ function removeArrayElements(obj, elem) {
         if(n === elem) {
           return true;
         }
-//        return n === elem;
       });
     }
   });
