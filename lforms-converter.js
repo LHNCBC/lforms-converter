@@ -36,7 +36,6 @@ _.extend(LForms.LFormsConverter.prototype, {
       json.code = json._id;
       json.type = 'CDE';
       delete json.stewardOrg;
-      json.template = 'list';
       renameKey(json, 'naming', 'name');
       renameKey(json, 'formElements', 'items');
       // Convert skip logic.
@@ -118,7 +117,6 @@ _.extend(LForms.LFormsConverter.prototype, {
   handleDisplayProfiles: function (param, path) {
     if(param && param.length > 0 && param[0].sectionsAsMatrix) {
       // Save to 'this'. It will be used in form element handler.
-      this.template = 'list';
       this.templateOptions = {displayControl: {questionLayout: 'matrix'}};
     }
     return oboe.drop();
