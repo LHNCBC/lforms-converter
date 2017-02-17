@@ -2,8 +2,8 @@
 
 var DemoPage = function() {
   return {
-    skipLogicSource: element(by.id('/Your_Health_Information/pWj94_qVzz_/1/1')),
-    skipLogicTarget1: element(by.id('/Your_Health_Information/Alcohol_Use/5tds2-CyWgt/1/1/1')),
+    skipLogicSource: element(by.id('/Your_Health_Information/pWj94_qVzz_/1/1Yes')),
+    skipLogicTarget1: element(by.cssContainingText('span.lf-question > label', 'Alcohol use frequency')),
     skipLogicTarget2: element(by.id('/Your_Health_Information/Alcohol_Use/vfSZy6m4c7o/1/1/1')),
     panelTitle: element(by.css('lf-form-title span')),
     formSelector: element(by.id('formSelector')),

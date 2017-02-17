@@ -36,6 +36,10 @@ _.extend(LForms.LFormsConverter.prototype, {
       json.code = json._id;
       json.type = 'CDE';
       delete json.stewardOrg;
+      // Add default answer layout
+      json.templateOptions = {
+        defaultAnswerLayout: {answerLayout: {type: 'RADIO_CHECKBOX', columns: 2}}
+      };
       renameKey(json, 'naming', 'name');
       renameKey(json, 'formElements', 'items');
       // Convert skip logic.
