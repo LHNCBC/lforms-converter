@@ -114,7 +114,6 @@ describe('Test lforms-converter', function() {
     converter.convert('test/Q1S9NhOK8e.json', function(lfData) {
       expect(lfData.items[0].displayControl).toEqual({questionLayout: 'matrix'});
       expect(lfData.items[1].displayControl).toEqual({questionLayout: 'matrix'});
-      expect(lfData.template).toEqual('list');
       done();
     }, function(err) {
       done.fail(JSON.stringify(err));

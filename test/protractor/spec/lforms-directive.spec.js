@@ -54,8 +54,7 @@
 
       it('Should display targets on setting source to Yes', function() {
         // Trigger with source
-        page.skipLogicSource.sendKeys('Yes');
-        page.skipLogicSource.sendKeys(protractor.Key.TAB);
+        page.skipLogicSource.click();
 
         expect(page.skipLogicTarget1.isDisplayed()).toBeTruthy();
         expect(page.skipLogicTarget2.isDisplayed()).toBeTruthy();
