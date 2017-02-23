@@ -216,6 +216,17 @@ _.extend(LForms.LFormsConverter.prototype, {
         if(q.datatypeNumber) {
           param.restrictions = createRestrictions(q.datatypeNumber);
         }
+
+        // Handle defaultAnswer
+        if(typeof q.defaultAnswer !== 'undefined') {
+          param.defaultAnswer = q.defaultAnswer;
+          if(param.dataType === 'CNE' || param.dataType === 'CWE') {
+            param.value = _.find(param.answers, {code: q.defaultAnswer});
+          }
+          else {
+            param.value = q.defaultAnswer;
+          }
+        }
       }
 
       // Handle instructions

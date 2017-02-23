@@ -1,10 +1,11 @@
 {
-  "_id": "56bcad7e1c1ec01347b0f445",
+  "_id": "58adfc4b5e3821237d24dcea",
   "created": "2014-11-05T15:54:45.689Z",
   "tinyId": "bJ5Sm82g8",
   "isCopyrighted": false,
   "__v": 0,
-  "updated": "2016-02-11T15:49:18.916Z",
+  "updated": "2017-02-22T21:02:03.617Z",
+  "lastMigrationScript": "mergeNamingWithTags",
   "referenceDocuments": [],
   "displayProfiles": [],
   "classification": [
@@ -139,6 +140,7 @@
           "formElements": [],
           "question": {
             "datatype": "Value List",
+            "defaultAnswer": "Unknown",
             "answers": [
               {
                 "valueMeaningName": "Female",
@@ -1043,19 +1045,6 @@
         "min": 0,
         "max": -1
       }
-    },
-    {
-      "formElements": [],
-      "question": {
-        "answers": [],
-        "editable": true,
-        "required": false,
-        "uoms": [],
-        "cde": {
-          "ids": [],
-          "permissibleValues": []
-        }
-      }
     }
   ],
   "updatedBy": {
@@ -1072,7 +1061,8 @@
     "56b8e81a4aabf7c2735a433d",
     "56bcac381c1ec01347b0f3b7",
     "56bcac881c1ec01347b0f3d1",
-    "56bcad021c1ec01347b0f3e9"
+    "56bcad021c1ec01347b0f3e9",
+    "56bcad7e1c1ec01347b0f445"
   ],
   "comments": [],
   "attachments": [],
@@ -1081,6 +1071,7 @@
   "registrationState": {
     "registrationStatus": "Incomplete"
   },
+  "sources": [],
   "stewardOrg": {
     "name": "TEST"
   },
@@ -1088,10 +1079,11 @@
     {
       "designation": "Test LForms",
       "definition": "A sample form 2",
-      "context": {
-        "contextName": "Health",
-        "acceptability": "preferred"
-      }
+      "tags": [
+        {
+          "tag": "Health"
+        }
+      ]
     }
   ]
 }

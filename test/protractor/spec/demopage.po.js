@@ -16,7 +16,7 @@ var DemoPage = function() {
     itemRequired: element(by.id('/Your_Health_Information/tXwaaWzu1Od/1/1')),
     itemRequiredPopup: element(by.cssContainingText('div.validation-error', 'requires a value')),
     matrixRadioButtons: element.all(by.css('div.lf-form-body input[type="radio"]')),
-
+    genderTypeDefaultAnswer: element(by.id("/Your_Health_Information/9dPqtbFSpZU/1/1Unknown")),
     /**
      * Wait until an element is displayed. 
      * 

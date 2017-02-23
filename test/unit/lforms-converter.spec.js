@@ -46,6 +46,17 @@ describe('Test lforms-converter', function() {
     });
   });
 
+  it('should convert defaultAnswer', function(done) {
+    converter = new LForms.LFormsConverter();
+    converter.convert('test/bJ5Sm82g8.json', function(lfData) {
+      expect(lfData.items[0].items[4].defaultAnswer).toEqual('Unknown');
+      expect(lfData.items[0].items[4].value).toEqual({text: 'Unknown', code: 'Unknown'});
+      done();
+    }, function(err) {
+      done.fail(JSON.stringify(err));
+    });
+  });
+
 
   it('should convert restrictions', function(done) {
     converter = new LForms.LFormsConverter();
