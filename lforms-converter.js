@@ -276,6 +276,8 @@ _.extend(LForms.LFormsConverter.prototype, {
   handleAnswers: function(param, path) {
     renameKey(param, 'permissibleValue', 'code');
     renameKey(param, 'valueMeaningName', 'text');
+    delete param.valueMeaningDefinition;
+    delete param.valueMeaningCode;
     return param;
   },
 

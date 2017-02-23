@@ -1,10 +1,10 @@
 {
-  "_id": "58adfc4b5e3821237d24dcea",
+  "_id": "58af013d6e95e16853ec44e2",
   "created": "2014-11-05T15:54:45.689Z",
   "tinyId": "bJ5Sm82g8",
   "isCopyrighted": false,
   "__v": 0,
-  "updated": "2017-02-22T21:02:03.617Z",
+  "updated": "2017-02-23T15:35:25.882Z",
   "lastMigrationScript": "mergeNamingWithTags",
   "referenceDocuments": [],
   "displayProfiles": [],
@@ -134,64 +134,82 @@
           "hideLabel": false
         },
         {
-          "label": "Gender Type",
           "elementType": "question",
-          "_id": "569e944149150bae223315c0",
+          "label": "Gender Code",
+          "skipLogic": {
+            "condition": ""
+          },
           "formElements": [],
           "question": {
             "datatype": "Value List",
-            "defaultAnswer": "Unknown",
+            "defaultAnswer": "1",
             "answers": [
               {
-                "valueMeaningName": "Female",
-                "permissibleValue": "Female"
-              },
-              {
-                "valueMeaningName": "Male",
-                "permissibleValue": "Male"
-              },
-              {
+                "permissibleValue": "0",
                 "valueMeaningName": "Unknown",
-                "permissibleValue": "Unknown"
+                "valueMeaningDefinition": "Not known, not observed, not recorded, or refused.",
+                "valueMeaningCode": "C17998"
               },
               {
-                "valueMeaningName": "Undifferentiated/Indeterminant/Intersex",
-                "permissibleValue": "Unspecified"
+                "permissibleValue": "1",
+                "valueMeaningName": "Male",
+                "valueMeaningDefinition": "A person who belongs to the sex that normally produces sperm. The term is used to indicate biological sex distinctions, cultural gender role distinctions, or both.",
+                "valueMeaningCode": "C20197"
               },
               {
-                "valueMeaningName": "Not reported",
-                "permissibleValue": "Not reported"
+                "permissibleValue": "2",
+                "valueMeaningName": "Female",
+                "valueMeaningDefinition": "A person who belongs to the sex that normally produces ova. The term is used to indicate biological sex distinctions, or cultural gender role distinctions, or both.",
+                "valueMeaningCode": "C16576"
+              },
+              {
+                "permissibleValue": "9",
+                "valueMeaningName": "Not specified",
+                "valueMeaningDefinition": "Not stated explicitly or in detail.",
+                "valueMeaningCode": "C38046"
               }
             ],
             "editable": true,
             "required": false,
             "uoms": [],
             "cde": {
-              "version": "3",
-              "tinyId": "9dPqtbFSpZU",
-              "ids": [],
+              "tinyId": "71MomQmJyx",
+              "version": "1",
+              "name": "Gender Code",
+              "ids": [
+                {
+                  "source": "caDSR",
+                  "id": "2179640",
+                  "version": "1"
+                }
+              ],
               "permissibleValues": [
                 {
-                  "permissibleValue": "Female",
-                  "valueMeaningName": "Female"
+                  "permissibleValue": "0",
+                  "valueMeaningName": "Unknown",
+                  "valueMeaningDefinition": "Not known, not observed, not recorded, or refused.",
+                  "valueMeaningCode": "C17998"
                 },
                 {
-                  "permissibleValue": "Male",
-                  "valueMeaningName": "Male"
+                  "permissibleValue": "1",
+                  "valueMeaningName": "Male",
+                  "valueMeaningDefinition": "A person who belongs to the sex that normally produces sperm. The term is used to indicate biological sex distinctions, cultural gender role distinctions, or both.",
+                  "valueMeaningCode": "C20197"
                 },
                 {
-                  "permissibleValue": "Unknown",
-                  "valueMeaningName": "Unknown"
+                  "permissibleValue": "2",
+                  "valueMeaningName": "Female",
+                  "valueMeaningDefinition": "A person who belongs to the sex that normally produces ova. The term is used to indicate biological sex distinctions, or cultural gender role distinctions, or both.",
+                  "valueMeaningCode": "C16576"
                 },
                 {
-                  "permissibleValue": "Unspecified",
-                  "valueMeaningName": "Undifferentiated/Indeterminant/Intersex"
-                },
-                {
-                  "permissibleValue": "Not reported",
-                  "valueMeaningName": "Not reported"
+                  "permissibleValue": "9",
+                  "valueMeaningName": "Not specified",
+                  "valueMeaningDefinition": "Not stated explicitly or in detail.",
+                  "valueMeaningCode": "C38046"
                 }
-              ]
+              ],
+              "derivationRules": []
             }
           },
           "cardinality": {
@@ -1062,7 +1080,8 @@
     "56bcac381c1ec01347b0f3b7",
     "56bcac881c1ec01347b0f3d1",
     "56bcad021c1ec01347b0f3e9",
-    "56bcad7e1c1ec01347b0f445"
+    "56bcad7e1c1ec01347b0f445",
+    "58adfc4b5e3821237d24dcea"
   ],
   "comments": [],
   "attachments": [],
