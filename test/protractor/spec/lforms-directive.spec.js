@@ -42,8 +42,7 @@
       expect(page.itemRequiredPopup.isDisplayed()).toBeTruthy();
     });
 
-    // TODO - LForms is not working with default values yet.
-    xit('should display default selected radio button', function() {
+    it('should display default selected radio button', function() {
       expect(page.genderTypeDefaultAnswer.isSelected()).toBeTruthy();
     });
 
