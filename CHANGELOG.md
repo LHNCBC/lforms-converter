@@ -9,7 +9,7 @@ This project follows [Semantic Versioning](http://semver.org/).
 
 ## [3.1.0] - 2017-02-22
 ### Added
-- Change default answer layout from pull down list to two column radio or checkboxes.
+- Changed default answer layout from pull down list to two column radio or checkboxes.
 
 ## [3.0.0] - 2016-12-09
 ### Added
