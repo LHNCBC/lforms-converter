@@ -3,6 +3,14 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [3.2.0] - 2017-03-06
+### Added
+- Added functionality to parse default answer from CDE forms.
+
+## [3.1.0] - 2017-02-22
+### Added
+- Change default answer layout from pull down list to two column radio or checkboxes.
+
 ## [3.0.0] - 2016-12-09
 ### Added
 - Added functionality to parse boolean expressions in skip logic condition from CDE forms
