@@ -42,6 +42,9 @@
       expect(page.itemRequiredPopup.isDisplayed()).toBeTruthy();
     });
 
+    it('should display default selected radio button', function() {
+      expect(page.genderTypeDefaultAnswer.isSelected()).toBeTruthy();
+    });
 
     describe('should test skip logic', function () {
 

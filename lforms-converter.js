@@ -216,6 +216,17 @@ _.extend(LForms.LFormsConverter.prototype, {
         if(q.datatypeNumber) {
           param.restrictions = createRestrictions(q.datatypeNumber);
         }
+
+        // Handle defaultAnswer
+        if(typeof q.defaultAnswer !== 'undefined') {
+          param.defaultAnswer = q.defaultAnswer;
+          if(param.dataType === 'CNE' || param.dataType === 'CWE') {
+            param.value = _.find(param.answers, {code: q.defaultAnswer});
+          }
+          else {
+            param.value = q.defaultAnswer;
+          }
+        }
       }
 
       // Handle instructions
@@ -265,6 +276,8 @@ _.extend(LForms.LFormsConverter.prototype, {
   handleAnswers: function(param, path) {
     renameKey(param, 'permissibleValue', 'code');
     renameKey(param, 'valueMeaningName', 'text');
+    delete param.valueMeaningDefinition;
+    delete param.valueMeaningCode;
     return param;
   },
 
