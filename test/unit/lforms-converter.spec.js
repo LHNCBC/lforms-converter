@@ -49,8 +49,7 @@ describe('Test lforms-converter', function() {
   it('should convert defaultAnswer', function(done) {
     converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
-      expect(lfData.items[0].items[4].defaultAnswer).toEqual('1');
-      expect(lfData.items[0].items[4].value).toEqual({text: 'Male', code: '1'});
+      expect(lfData.items[0].items[4].defaultAnswer).toEqual({code: '1'});
       done();
     }, function(err) {
       done.fail(JSON.stringify(err));
