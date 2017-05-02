@@ -219,12 +219,11 @@ _.extend(LForms.LFormsConverter.prototype, {
 
         // Handle defaultAnswer
         if(typeof q.defaultAnswer !== 'undefined') {
-          param.defaultAnswer = q.defaultAnswer;
           if(param.dataType === 'CNE' || param.dataType === 'CWE') {
-            param.value = _.find(param.answers, {code: q.defaultAnswer});
+            param.defaultAnswer = {code: q.defaultAnswer};
           }
           else {
-            param.value = q.defaultAnswer;
+            param.defaultAnswer = q.defaultAnswer;
           }
         }
       }

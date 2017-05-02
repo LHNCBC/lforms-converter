@@ -1,6 +1,6 @@
 {
   "name": "lforms-converter",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "main": [
     "parser/ast.js",
     "parser/skl-parser.js",
@@ -13,7 +13,7 @@
     "lodash": "^3.10.0"
   },
   "devDependencies": {
-    "lforms": "^11.0.0",
+    "lforms": "^11.2.1",
     "angular-route": "^1.5.11",
     "angular-sanitize": "^1.5.9"
   },
