@@ -22,16 +22,31 @@ describe('Test lforms-converter', function() {
     });
   });
 
-  it('should do the same with caller supplied fields', function(done) {
+  it('should fetch and convert with caller supplied fields without templateOptions', function(done) {
     converter = new LForms.LFormsConverter();
     converter.convert('test/bJ5Sm82g8.json', function(lfData) {
       expect(lfData.type).toEqual('XXXXX');
       expect(lfData.template).toEqual('form-view-b');
-
+      // Default template options
+      expect(lfData.templateOptions).toEqual({defaultAnswerLayout: {answerLayout: {type: "RADIO_CHECKBOX", columns: 2}}});
       done();
     }, function(err) {
       done.fail(JSON.stringify(err));
     }, {type: 'XXXXX', template: 'form-view-b'});
+  });
+
+
+  it('should fetch and convert merging caller supplied templateOptions', function(done) {
+    var formHeaderItems = [{question: 'col1', dataType: 'ST'}, {question: 'col2', dataType: 'DT'}];
+    var additionalFields = {templateOptions: {formHeaderItems: formHeaderItems, defaultAnswerLayout: {answerLayout: {columns: 6}}}};
+    var expectedTemplateOptions = {defaultAnswerLayout: {answerLayout: {type: "RADIO_CHECKBOX", columns: 6}}, formHeaderItems: formHeaderItems};
+    converter = new LForms.LFormsConverter();
+    converter.convert('test/bJ5Sm82g8.json', function(lfData) {
+      expect(lfData.templateOptions).toEqual(expectedTemplateOptions);
+      done();
+    }, function(err) {
+      done.fail(JSON.stringify(err));
+    }, additionalFields);
   });
 
 

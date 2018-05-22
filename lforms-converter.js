@@ -26,6 +26,9 @@ _.extend(LForms.LFormsConverter.prototype, {
    *  @param {function} successCallback - Handler to capture converted object.
    *  @param {function} failCallback - Error handler.
    *  @param {Object}  additionalFields - Optionals fields to add or override to the converted form.
+   *         If additionalFields include templateOptions, it will do deep merge with default templateOptions.
+   *         The default templateOptions is {defaultAnswerLayout: {answerLayout: {type: 'RADIO_CHECKBOX', columns: 2}}}
+   *
    */
   convert: function(inputSource, successCallback, failCallback, additionalFields) {
     var self = this;
@@ -46,7 +49,7 @@ _.extend(LForms.LFormsConverter.prototype, {
       doSkipLogic(json, self);
       // Remove any undefined
       removeArrayElements(json, undefined);
-      addAdditionalFields(json, additionalFields);
+      addMergeAdditionalFields(json, additionalFields);
       successCallback(json, self.warnings);
       delete self.warnings;
       parser.removeListener('done', success);
@@ -380,10 +383,15 @@ _.extend(LForms.LFormsConverter.prototype, {
  * @param json - Parsed lforms object
  * @param options {Object}
  */
-function addAdditionalFields(json, options) {
+function addMergeAdditionalFields(json, options) {
   if(options) {
     Object.keys(options).forEach(function(k) {
-      json[k] = options[k];
+      if(k === 'templateOptions') {
+        _.merge(json.templateOptions, options[k]);
+      }
+      else {
+        json[k] = options[k];
+      }
     });
   }
 }

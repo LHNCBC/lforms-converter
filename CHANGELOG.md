@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [3.2.2] - 2017-05-22
+### Fixed
+- Merge templateOptions into converted output if found in additionalFields argument.
+
 ## [3.2.1] - 2017-05-01
 ### Fixed
 - Convert default answer in conformance to lforms 11.2.1.
