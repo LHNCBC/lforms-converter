@@ -13,7 +13,7 @@
     "grunt-nsp": "^2.1.2",
     "grunt-protractor-runner": "^3.1.0",
     "grunt-wiredep": "^2.0.0",
-    "jasmine-spec-reporter": "^2.4.0",
+    "jasmine-spec-reporter": "^3.3.0",
     "jison": "^0.4.17",
     "jit-grunt": "^0.5.0",
     "jshint-stylish": "^0.2.0",
