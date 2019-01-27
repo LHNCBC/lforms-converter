@@ -50,7 +50,7 @@ The final argument is a callback used in case of an error ocurring.  Its
 argument is an object with the following fields (as documented in
 [oboe](http://oboejs.com/api#fail-event)):
 
-* thrown -  if an an error was thrown, this will contain that
+* thrown -  if an error was thrown, this will contain that
 * statusCode - the status code, if the request got that far
 * body - the response body for the error, if any
 * jsonBody - if the server’s error response was JSON, the parsed body
